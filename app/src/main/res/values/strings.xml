@@ -11,4 +11,6 @@
     <string name="sign_up">Sign Up</string>
     <string name="submit">Submit</string>
     <string name="logo_desc">app logo</string>
+    <string name="facebook_app_id">1856824864411243</string>
+    <string name="fb_login_protocol_scheme">fb1856824864411243</string>
 </resources>
