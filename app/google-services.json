@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "259328839948",
+    "firebase_url": "https://water18-bff08.firebaseio.com",
+    "project_id": "water18-bff08",
+    "storage_bucket": "water18-bff08.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259328839948:android:585d3c75cf6add7b",
+        "android_client_info": {
+          "package_name": "edu.bluejack17_2.water18"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "259328839948-09i56gb9sevtqtthk37tplhrfrno43j9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCegW6tXYzRGco1NXPTjjvFrcMmW09BGb4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
