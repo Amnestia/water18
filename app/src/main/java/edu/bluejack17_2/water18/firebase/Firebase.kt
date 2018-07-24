@@ -30,10 +30,10 @@ object Firebase
         {
             override fun onVerificationCompleted(credential: PhoneAuthCredential?)
             {
-
+                
             }
 
-            override fun onVerificationFailed(p0: FirebaseException?)
+            override fun onVerificationFailed(e: FirebaseException?)
             {
 
             }

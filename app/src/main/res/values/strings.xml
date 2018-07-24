@@ -10,7 +10,10 @@
     <string name="login_with_facebook">Login with Facebook</string>
     <string name="sign_up">Sign Up</string>
     <string name="submit">Submit</string>
+    <string name="confirm">Confirm</string>
     <string name="logo_desc">app logo</string>
     <string name="facebook_app_id">1856824864411243</string>
     <string name="fb_login_protocol_scheme">fb1856824864411243</string>
+    <string name="phoneNumberConfirmation">We have sent a verification code via SMS.Please enter the code in the input above and confirm your number</string>
+    <string name="placeholder_verification_code">Verification Code</string>
 </resources>

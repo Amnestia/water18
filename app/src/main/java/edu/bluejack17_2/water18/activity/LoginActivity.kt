@@ -6,8 +6,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.Window
 import edu.bluejack17_2.water18.R
-import edu.bluejack17_2.water18.firebase.Firebase
-import edu.bluejack17_2.water18.utility.Hash
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : Activity(), View.OnClickListener
@@ -39,7 +37,6 @@ class LoginActivity : Activity(), View.OnClickListener
             {
                 val phone=tfPhoneLogin.text
                 val password=pfPassword.text
-                Firebase.login(phone.toString(),Hash.hashSHA512(password.toString()).toString())
             }
             else -> return
         }
