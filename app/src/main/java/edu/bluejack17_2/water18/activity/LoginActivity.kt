@@ -30,7 +30,7 @@ class LoginActivity : Activity(), View.OnClickListener
         when(src){
             btnSignUp->
             {
-                val intent=Intent(applicationContext,SignUpActivity::class.java)
+                val intent=Intent(applicationContext,EditProfileActivity::class.java)
                 startActivity(intent)
             }
             btnLogin->

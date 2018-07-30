@@ -11,5 +11,7 @@ class PhoneVerificationActivity : Activity()
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_phone_verification)
+        val verificationCode = intent.getStringExtra("verificationCode")
+        val token = intent.getStringExtra("token")
     }
 }
