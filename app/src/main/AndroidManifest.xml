@@ -21,7 +21,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.SignUpActivity" />
+        <activity android:name=".activity.EditProfileActivity" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -43,7 +43,8 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.PhoneVerificationActivity"></activity>
+        <activity android:name=".activity.PhoneVerificationActivity" />
+        <activity android:name=".activity.SignUpWithPhoneNumberActivity"></activity>
     </application>
 
 </manifest>
