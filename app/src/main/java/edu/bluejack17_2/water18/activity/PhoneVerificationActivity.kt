@@ -13,7 +13,7 @@ class PhoneVerificationActivity : Activity(), View.OnClickListener
 {
     private fun addListener()
     {
-        val buttons= arrayOf(btn_login, btnResend)
+        val buttons= arrayOf(btn_confirm, btn_resend)
         buttons.forEach { it.setOnClickListener(this) }
     }
 
@@ -28,11 +28,11 @@ class PhoneVerificationActivity : Activity(), View.OnClickListener
     {
         when(src)
         {
-            btn_login->
+            btn_confirm->
             {
                 confirm()
             }
-            btnResend->
+            btn_resend->
             {
                 resend()
             }
@@ -50,7 +50,7 @@ class PhoneVerificationActivity : Activity(), View.OnClickListener
     fun confirm()
     {
         val verificationCode=intent.getStringExtra("verificationCode")
-        val code = tfVerificationCode.text.toString()
+        val code = tf_verification_code.text.toString()
         val credential=PhoneAuthProvider.getCredential(verificationCode,code)
         if(!PhoneNumberAuth.signIn(credential,this))
         {

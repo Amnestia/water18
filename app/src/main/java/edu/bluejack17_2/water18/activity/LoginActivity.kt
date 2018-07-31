@@ -13,7 +13,7 @@ class LoginActivity : Activity(), View.OnClickListener
 
     private fun addListener()
     {
-        val buttons=arrayOf(btn_login,btn_login_facebook,btn_login_google,btn_login)
+        val buttons=arrayOf(btn_login ,btn_login_facebook ,btn_login_google ,btn_sign_up)
         buttons.forEach { it.setOnClickListener(this) }
     }
 

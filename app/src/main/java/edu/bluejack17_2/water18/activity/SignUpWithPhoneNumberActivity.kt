@@ -11,7 +11,7 @@ class SignUpWithPhoneNumberActivity : Activity(), View.OnClickListener
 {
     private fun addListener()
     {
-        val buttons= arrayOf(btn_login)
+        val buttons= arrayOf(btn_sign_up)
         buttons.forEach { it.setOnClickListener(this) }
     }
 
@@ -26,7 +26,7 @@ class SignUpWithPhoneNumberActivity : Activity(), View.OnClickListener
     {
         when(src)
         {
-            btn_login->
+            btn_sign_up->
             {
                 signUp()
             }
