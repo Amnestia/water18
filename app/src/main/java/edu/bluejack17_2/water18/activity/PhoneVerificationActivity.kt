@@ -20,6 +20,7 @@ class PhoneVerificationActivity : Activity(), View.OnClickListener
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_phone_verification)
+        addListener()
     }
 
     override fun onClick(src: View?)
@@ -50,5 +51,9 @@ class PhoneVerificationActivity : Activity(), View.OnClickListener
         val verificationCode=intent.getStringExtra("verificationCode")
         val code = tfVerificationCode.text.toString()
         val credential=PhoneAuthProvider.getCredential(verificationCode,code)
+        if(!PhoneNumberAuth.signIn(credential,this))
+        {
+            resend()
+        }
     }
 }
