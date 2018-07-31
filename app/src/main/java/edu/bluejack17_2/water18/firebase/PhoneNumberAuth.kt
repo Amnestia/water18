@@ -3,7 +3,9 @@ package edu.bluejack17_2.water18.firebase
 import android.app.Activity
 import android.content.Intent
 import android.util.Log
+import android.widget.Toast
 import com.google.firebase.FirebaseException
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import edu.bluejack17_2.water18.activity.PhoneVerificationActivity
@@ -11,13 +13,13 @@ import java.util.concurrent.TimeUnit
 
 object PhoneNumberAuth
 {
-    fun callbacks(phoneNumber: String,activity: Activity) : PhoneAuthProvider.OnVerificationStateChangedCallbacks
+    private fun callbacks(phoneNumber: String,activity: Activity) : PhoneAuthProvider.OnVerificationStateChangedCallbacks
     {
         return object : PhoneAuthProvider.OnVerificationStateChangedCallbacks()
         {
             override fun onVerificationCompleted(credential: PhoneAuthCredential?)
             {
-                signIn(credential)
+                signIn(credential,activity)
             }
 
             override fun onVerificationFailed(e: FirebaseException?)
@@ -48,8 +50,25 @@ object PhoneNumberAuth
         PhoneAuthProvider.getInstance().verifyPhoneNumber(phoneNumber,300, TimeUnit.SECONDS,activity,callbacks(phoneNumber,activity),token)
     }
 
-    fun signIn(credential: PhoneAuthCredential?)
+    fun signIn(credential: PhoneAuthCredential?, activity: Activity): Boolean
     {
+        var ret=false
+        val auth=FirebaseAuth.getInstance()
+        if(credential != null)
+        {
+            auth.signInWithCredential(credential).addOnCompleteListener(activity) { task ->
+                if(task.isSuccessful)
+                {
+                    Firebase.setUser(task.result.user)
+                    ret=true
+                }
+                else
+                {
+                    Toast.makeText(activity.applicationContext,"Sign in failed",Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+        return ret
 
     }
 }

@@ -6,23 +6,22 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import edu.bluejack17_2.water18.R
-import edu.bluejack17_2.water18.firebase.Firebase
 import edu.bluejack17_2.water18.model.User
 import edu.bluejack17_2.water18.utility.Hash
-import kotlinx.android.synthetic.main.activity_sign_up.*
+import kotlinx.android.synthetic.main.activity_edit_profile.*
 
 class EditProfileActivity : Activity(), View.OnClickListener
 {
     private fun addListener()
     {
-        val buttons= arrayOf(btnSubmit)
+        val buttons= arrayOf(btn_submit)
         buttons.forEach { it.setOnClickListener(this) }
     }
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
+        setContentView(R.layout.activity_edit_profile)
         addListener()
     }
 
@@ -30,7 +29,7 @@ class EditProfileActivity : Activity(), View.OnClickListener
     {
         when(src)
         {
-            btnSubmit->
+            btn_submit->
             {
                 submitUserData()
             }
@@ -40,11 +39,11 @@ class EditProfileActivity : Activity(), View.OnClickListener
 
     fun submitUserData()
     {
-        val name=tfName.text.toString()
-        val address=tfAddress.text.toString()
-        val password=pfPassword.text.toString()
-        val conPass=pfConPass.text.toString()
-        val phone=tfPhone.text.toString()
+        val name=tf_name.text.toString()
+        val address=tf_address.text.toString()
+        val password=pf_password.text.toString()
+        val conPass=pf_confirm_password.text.toString()
+        val phone="1"//tfPhone.text.toString()
 
         val ret=validate(name, address, phone, password, conPass)
         if(!ret.equals("1"))
@@ -54,7 +53,6 @@ class EditProfileActivity : Activity(), View.OnClickListener
         }
 
         val user= User(name,address,phone, Hash.hashSHA512(password))
-        Firebase.insertUser(user)
 
         val success="Your account has been successfully registered!"
         Toast.makeText(this,success,Toast.LENGTH_SHORT).show()

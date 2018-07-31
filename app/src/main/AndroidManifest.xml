@@ -44,7 +44,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.PhoneVerificationActivity" />
-        <activity android:name=".activity.SignUpWithPhoneNumberActivity"></activity>
+        <activity android:name=".activity.SignUpWithPhoneNumberActivity" />
+        <activity android:name=".activity.HomeActivity"></activity>
     </application>
 
 </manifest>

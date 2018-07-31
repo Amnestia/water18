@@ -2,8 +2,6 @@ package edu.bluejack17_2.water18.firebase
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.FirebaseDatabase
-import edu.bluejack17_2.water18.model.User
 
 object Firebase
 {
@@ -13,14 +11,10 @@ object Firebase
         return mAuth.currentUser
     }
 
-    fun insertUser(u: User)
+    fun setUser(user: FirebaseUser)
     {
-        val db=FirebaseDatabase.getInstance().getReference("user")
-        db.child(u.phoneNumber.toString()).setValue(u)
+        FirebaseAuth.getInstance().updateCurrentUser(user)
     }
-
-
-
 
 }
 

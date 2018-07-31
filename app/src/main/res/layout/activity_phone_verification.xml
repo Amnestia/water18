@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.PhoneVerificationActivity"
-    android:background="@color/whiteBackground">
+    android:background="@color/white_background">
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/tf_layout_name"
+        android:id="@+id/tf_layout_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="134dp"
@@ -19,10 +19,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/tfPhoneLogin"
+            android:id="@+id/tf_verification_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/whiteBackground"
+            android:background="@color/white_background"
             android:ems="10"
             android:hint="@string/placeholder_verification_code"
             android:inputType="phone"
@@ -31,30 +31,45 @@
     </android.support.design.widget.TextInputLayout>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txt_verification"
         android:layout_width="298dp"
         android:layout_height="69dp"
         android:layout_marginEnd="51dp"
         android:layout_marginStart="35dp"
         android:layout_marginTop="15dp"
-        android:text="@string/phoneNumberConfirmation"
+        android:text="@string/phone_number_confirmation_text"
         android:textColor="@color/colorBlack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tf_layout_name" />
+        app:layout_constraintTop_toBottomOf="@+id/tf_layout_phone" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btn_confirm"
         android:layout_width="270dp"
         android:layout_height="51dp"
-        android:layout_marginBottom="299dp"
         android:layout_marginEnd="79dp"
         android:layout_marginStart="35dp"
-        android:layout_marginTop="25dp"
-        android:background="@color/lightBlueBackground"
+        android:layout_marginTop="21dp"
+        android:background="@color/light_blue_background"
+        android:text="@string/confirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_verification" />
+
+    <Button
+        android:id="@+id/btn_resend"
+        android:layout_width="270dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="230dp"
+        android:layout_marginEnd="79dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="22dp"
+        android:background="@color/light_blue_background"
+        android:text="@string/resend"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
 </android.support.constraint.ConstraintLayout>
