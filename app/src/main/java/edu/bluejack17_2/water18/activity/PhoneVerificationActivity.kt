@@ -1,6 +1,7 @@
 package edu.bluejack17_2.water18.activity
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.google.firebase.auth.PhoneAuthProvider
@@ -54,6 +55,11 @@ class PhoneVerificationActivity : Activity(), View.OnClickListener
         if(!PhoneNumberAuth.signIn(credential,this))
         {
             resend()
+        }
+        else
+        {
+            val intent= Intent(applicationContext,HomeActivity::class.java)
+            startActivity(intent)
         }
     }
 }

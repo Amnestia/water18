@@ -13,7 +13,7 @@ object Firebase
 
     fun setUser(user: FirebaseUser)
     {
-
+        FirebaseAuth.getInstance().updateCurrentUser(user)
     }
 
 }
