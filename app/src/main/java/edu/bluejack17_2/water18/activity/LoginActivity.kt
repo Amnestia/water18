@@ -13,7 +13,7 @@ class LoginActivity : Activity(), View.OnClickListener
 
     private fun addListener()
     {
-        val buttons=arrayOf(btnLogin,btnLoginFacebook,btnLoginGoogle,btnSignUp)
+        val buttons=arrayOf(btnSignUp,btnLoginFacebook,btnLoginGoogle,btnSignUp)
         buttons.forEach { it.setOnClickListener(this) }
     }
 
@@ -33,7 +33,7 @@ class LoginActivity : Activity(), View.OnClickListener
                 val intent=Intent(applicationContext,EditProfileActivity::class.java)
                 startActivity(intent)
             }
-            btnLogin->
+            btnSignUp->
             {
                 val phone=tfPhoneLogin.text
                 val password=pfPassword.text
