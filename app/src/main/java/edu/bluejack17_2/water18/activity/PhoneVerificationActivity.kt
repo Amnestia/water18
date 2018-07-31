@@ -13,7 +13,7 @@ class PhoneVerificationActivity : Activity(), View.OnClickListener
 {
     private fun addListener()
     {
-        val buttons= arrayOf(btnSignUp, btnResend)
+        val buttons= arrayOf(btn_login, btnResend)
         buttons.forEach { it.setOnClickListener(this) }
     }
 
@@ -28,7 +28,7 @@ class PhoneVerificationActivity : Activity(), View.OnClickListener
     {
         when(src)
         {
-            btnSignUp->
+            btn_login->
             {
                 confirm()
             }

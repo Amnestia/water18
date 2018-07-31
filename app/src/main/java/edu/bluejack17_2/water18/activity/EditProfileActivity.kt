@@ -14,7 +14,7 @@ class EditProfileActivity : Activity(), View.OnClickListener
 {
     private fun addListener()
     {
-        val buttons= arrayOf(btnSubmit)
+        val buttons= arrayOf(btn_submit)
         buttons.forEach { it.setOnClickListener(this) }
     }
 
@@ -29,7 +29,7 @@ class EditProfileActivity : Activity(), View.OnClickListener
     {
         when(src)
         {
-            btnSubmit->
+            btn_submit->
             {
                 submitUserData()
             }
@@ -39,10 +39,10 @@ class EditProfileActivity : Activity(), View.OnClickListener
 
     fun submitUserData()
     {
-        val name=tfName.text.toString()
-        val address=tfAddress.text.toString()
-        val password=pfPassword.text.toString()
-        val conPass=pfConPass.text.toString()
+        val name=tf_name.text.toString()
+        val address=tf_address.text.toString()
+        val password=pf_password.text.toString()
+        val conPass=pf_confirm_password.text.toString()
         val phone="1"//tfPhone.text.toString()
 
         val ret=validate(name, address, phone, password, conPass)

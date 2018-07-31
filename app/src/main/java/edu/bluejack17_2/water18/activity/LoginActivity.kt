@@ -13,7 +13,7 @@ class LoginActivity : Activity(), View.OnClickListener
 
     private fun addListener()
     {
-        val buttons=arrayOf(btnSignUp,btnLoginFacebook,btnLoginGoogle,btnSignUp)
+        val buttons=arrayOf(btn_login,btn_login_facebook,btn_login_google,btn_login)
         buttons.forEach { it.setOnClickListener(this) }
     }
 
@@ -28,15 +28,15 @@ class LoginActivity : Activity(), View.OnClickListener
     override fun onClick(src: View?)
     {
         when(src){
-            btnSignUp->
+            btn_login->
             {
                 val intent=Intent(applicationContext,SignUpWithPhoneNumberActivity::class.java)
                 startActivity(intent)
             }
-            btnSignUp->
+            btn_login->
             {
-                val phone=tfPhoneLogin.text
-                val password=pfPassword.text
+                val phone=tf_phone_login.text
+                val password=pf_password.text
             }
             else -> return
         }
