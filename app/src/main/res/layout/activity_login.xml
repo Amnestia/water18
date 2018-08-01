@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.LoginActivity"
-    android:background="@color/light_blue_background">
+    android:background="@color/lightBlueBackground">
 
     <LinearLayout
         android:id="@+id/linear_layout_logo"
@@ -64,7 +64,7 @@
         android:layout_marginEnd="40dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        app:cardBackgroundColor="@color/white_background"
+        app:cardBackgroundColor="@color/whiteBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +74,7 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white_background">
+            android:background="@color/whiteBackground">
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/tf_layout_phone"
@@ -127,7 +127,7 @@
                 android:layout_marginEnd="30dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="33dp"
-                android:background="@color/light_blue_background"
+                android:background="@color/lightBlueBackground"
                 android:text="@string/login"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -154,7 +154,7 @@
                 android:layout_marginEnd="70dp"
                 android:layout_marginStart="71dp"
                 android:layout_marginTop="12dp"
-                android:background="@color/light_blue_background"
+                android:background="@color/lightBlueBackground"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.491"
                 app:layout_constraintStart_toStartOf="parent"
@@ -168,7 +168,7 @@
                 android:layout_marginEnd="30dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="43dp"
-                android:background="@color/light_blue_background"
+                android:background="@color/lightBlueBackground"
                 android:text="@string/sign_up"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
