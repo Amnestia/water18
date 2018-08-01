@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_blue_background"
+    android:background="@color/lightBlueBackground"
     tools:context=".activity.EditProfileActivity">
 
     <LinearLayout
@@ -72,7 +72,7 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white_background">
+            android:background="@color/whiteBackground">
 
             <Button
                 android:id="@+id/btn_submit"
@@ -83,7 +83,7 @@
                 android:layout_marginStart="140dp"
                 android:layout_marginTop="9dp"
                 android:layout_weight="1"
-                android:background="@color/light_blue_background"
+                android:background="@color/lightBlueBackground"
                 android:text="@string/submit"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

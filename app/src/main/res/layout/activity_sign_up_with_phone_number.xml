@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.SignUpWithPhoneNumberActivity"
-    android:background="@color/white_background">
+    android:background="@color/whiteBackground">
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/tf_layout_phone"
@@ -22,7 +22,7 @@
             android:id="@+id/tfPhoneNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/white_background"
+            android:background="@color/whiteBackground"
             android:ems="10"
             android:hint="@string/placeholder_phone_number"
             android:inputType="phone"
@@ -38,7 +38,7 @@
         android:layout_marginEnd="79dp"
         android:layout_marginStart="35dp"
         android:layout_marginTop="50dp"
-        android:background="@color/light_blue_background"
+        android:background="@color/lightBlueBackground"
         android:text="@string/sign_up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
