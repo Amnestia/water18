@@ -28,7 +28,7 @@
         <activity
             android:name=".activity.SignUpWithPhoneNumberActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".activity.HomeActivity" />
+        <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.EditProfileActivity" />
 
         <meta-data
