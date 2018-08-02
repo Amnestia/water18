@@ -13,7 +13,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activity.LoginActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,6 +22,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.PhoneVerificationActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activity.SignUpWithPhoneNumberActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".activity.HomeActivity" />
         <activity android:name=".activity.EditProfileActivity" />
 
         <meta-data
@@ -42,10 +50,7 @@
 
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
-        </activity>
-        <activity android:name=".activity.PhoneVerificationActivity" />
-        <activity android:name=".activity.SignUpWithPhoneNumberActivity" />
-        <activity android:name=".activity.HomeActivity" />
+        </activity>\
     </application>
 
 </manifest>

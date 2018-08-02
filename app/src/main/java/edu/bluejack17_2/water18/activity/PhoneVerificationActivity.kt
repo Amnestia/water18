@@ -1,15 +1,15 @@
 package edu.bluejack17_2.water18.activity
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.google.firebase.auth.PhoneAuthProvider
 import edu.bluejack17_2.water18.R
 import edu.bluejack17_2.water18.firebase.PhoneNumberAuth
 import kotlinx.android.synthetic.main.activity_phone_verification.*
 
-class PhoneVerificationActivity : Activity(), View.OnClickListener
+class PhoneVerificationActivity : AppCompatActivity(), View.OnClickListener
 {
     private fun addListener()
     {

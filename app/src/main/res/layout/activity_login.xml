@@ -101,7 +101,7 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/pf_layout_password"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="73dp"
                 android:layout_marginEnd="89dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
@@ -112,7 +112,7 @@
                 <EditText
                     android:id="@+id/pf_password"
                     android:layout_width="wrap_content"
-                    android:layout_height="37dp"
+                    android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="@string/placeholder_password"
                     android:inputType="textPassword"
@@ -126,7 +126,7 @@
                 android:layout_height="51dp"
                 android:layout_marginEnd="30dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="33dp"
+                android:layout_marginTop="15dp"
                 android:background="@color/lightBlueBackground"
                 android:text="@string/login"
                 app:layout_constraintEnd_toEndOf="parent"
