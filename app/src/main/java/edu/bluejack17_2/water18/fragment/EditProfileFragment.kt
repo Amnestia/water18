@@ -36,7 +36,7 @@ class EditProfileFragment : Fragment(), View.OnClickListener
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_order, container, false)
+        return inflater.inflate(R.layout.fragment_edit_profile, container, false)
     }
 
     override fun onClick(src: View?)
