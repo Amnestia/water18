@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:background="@color/whiteBackground"
             android:ems="10"
-            android:hint="@string/placeholder_phone_number"
+            android:hint="@string/phone_number"
             android:inputType="phone"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="44dp" />
