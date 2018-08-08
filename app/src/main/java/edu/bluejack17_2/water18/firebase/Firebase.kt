@@ -7,8 +7,7 @@ object Firebase
 {
     fun getCurrentUser() : FirebaseUser?
     {
-        var mAuth = FirebaseAuth.getInstance()
-        return mAuth.currentUser
+        return FirebaseAuth.getInstance().currentUser
     }
 
     fun setUser(user: FirebaseUser)

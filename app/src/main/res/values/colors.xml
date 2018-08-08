@@ -8,4 +8,5 @@
     <color name="colorBlack">#000000</color>
     <color name="darkBlueBackground">#4c83db</color>
     <color name="blueBackground">#86aeef</color>
+    <color name="navDrawBackground">#a7c3f2</color>
 </resources>
