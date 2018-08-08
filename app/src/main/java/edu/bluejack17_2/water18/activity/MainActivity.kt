@@ -54,9 +54,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_history -> HistoryFragment.newInstance()
             R.id.nav_edit_profile -> EditProfileFragment.newInstance()
             else -> null
+        } ?: return false
+
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.content_frame,fragment as Fragment)
+            commit()
         }
-        //supportFragmentManager.beginTransaction(,fragment).commit()
         drawer_layout.closeDrawers()
+
         return true
     }
 }
