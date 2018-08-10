@@ -11,4 +11,12 @@
         layout="@layout/drawer_navigation"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="edu.bluejack17_2.water18.fragment.tab.view.HomeFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="135dp"
+        tools:layout_editor_absoluteY="255dp" />
 </android.support.constraint.ConstraintLayout>

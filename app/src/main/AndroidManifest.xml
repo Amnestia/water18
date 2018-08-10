@@ -24,7 +24,6 @@
         <activity android:name=".activity.PhoneVerificationActivity"/>
         <activity android:name=".activity.SignUpWithPhoneNumberActivity"/>
         <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.EditProfileActivity" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

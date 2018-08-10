@@ -1,19 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.HomeFragment">
+    tools:context=".fragment.tab.view.HomeFragment"
+    android:background="@color/lightBlueBackground">
 
-    <TextView
+
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+        <TextView
+            android:id="@+id/user_phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="92dp"
+            android:layout_marginStart="82dp"
+            android:layout_marginTop="80dp"
+            android:text="@string/phone_number"
+            android:textColor="@color/colorBlack"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+
+        <TextView
+            android:id="@+id/txt_user_phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="92dp"
+            android:layout_marginStart="82dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/phone_number"
+            android:textColor="@color/colorBlack"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user_phone_number" />
+
+        <TextView
+            android:id="@+id/user_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="146dp"
+            android:layout_marginStart="127dp"
+            android:layout_marginTop="22dp"
+            android:text="@string/address"
+            android:textColor="@color/colorBlack"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_user_phone_number" />
+
+        <TextView
+            android:id="@+id/txt_user_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="146dp"
+            android:layout_marginStart="127dp"
+            android:layout_marginTop="18dp"
+            android:text="@string/address"
+            android:textColor="@color/colorBlack"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user_address" />
+
+        <Button
+            android:id="@+id/btnChangePassword"
+            android:layout_width="239dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="102dp"
+            android:layout_marginEnd="72dp"
+            android:layout_marginStart="73dp"
+            android:layout_marginTop="104dp"
+            android:background="@color/blueBackground"
+            android:text="@string/change_password"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_user_address"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageButton
+            android:id="@+id/btnEdit"
+            android:layout_width="22dp"
+            android:layout_height="26dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="130dp"
+            android:layout_marginTop="22dp"
+            android:background="@color/lightBlueBackground"
+            android:src="@drawable/ic_edit"
+            app:layout_constraintBottom_toTopOf="@+id/txt_user_address"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/user_address"
+            app:layout_constraintTop_toBottomOf="@+id/txt_user_phone_number" />
+
+        <EditText
+            android:id="@+id/tf_user_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="85dp"
+            android:layout_marginEnd="84dp"
+            android:layout_marginStart="85dp"
+            android:layout_marginTop="17dp"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
+            app:layout_constraintBottom_toTopOf="@+id/btnChangePassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnEdit" />
+
+    </android.support.constraint.ConstraintLayout>
 </FrameLayout>

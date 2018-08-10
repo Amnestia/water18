@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:background="@color/whiteBackground"
             android:ems="10"
-            android:hint="@string/placeholder_verification_code"
+            android:hint="@string/verification_code"
             android:inputType="phone"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="44dp" />
