@@ -10,4 +10,11 @@
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
     tools:context=".fragment.OrderFragment"
-    tools:listitem="@layout/fragment_order" />
+    tools:listitem="@layout/fragment_order" >
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.RecyclerView>

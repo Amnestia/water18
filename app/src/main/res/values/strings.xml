@@ -26,6 +26,8 @@
     <string name="change_password">Change Password</string>
 
     <string name="quantity">Quantity</string>
+    <string name="total_price">Total Price</string>
+    <string name="checkout">Checkout</string>
 
     <string name="logo_desc">app logo</string>
     <string name="facebook_app_id">1856824864411243</string>
