@@ -8,9 +8,9 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import edu.bluejack17_2.water18.R
-import edu.bluejack17_2.water18.fragment.EditProfileFragment
-import edu.bluejack17_2.water18.fragment.HistoryFragment
-import edu.bluejack17_2.water18.fragment.HomeFragment
+import edu.bluejack17_2.water18.fragment.ChangePasswordFragment
+import edu.bluejack17_2.water18.fragment.tab.view.HistoryFragment
+import edu.bluejack17_2.water18.fragment.tab.view.HomeFragment
 import kotlinx.android.synthetic.main.drawer_navigation.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         {
             R.id.nav_home -> HomeFragment.newInstance()
             R.id.nav_history -> HistoryFragment.newInstance()
-            R.id.nav_edit_profile -> EditProfileFragment.newInstance()
+            R.id.nav_edit_profile -> ChangePasswordFragment.newInstance()
             else -> null
         } ?: return false
 
