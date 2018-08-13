@@ -1,4 +1,4 @@
-package edu.bluejack17_2.water18.fragment.tab.view
+package edu.bluejack17_2.water18.fragment.customer.tab.view
 
 
 import android.os.Bundle

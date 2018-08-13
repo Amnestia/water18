@@ -3,8 +3,8 @@ package edu.bluejack17_2.water18.adapter.tab
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import edu.bluejack17_2.water18.fragment.tab.view.HistoryFragment
-import edu.bluejack17_2.water18.fragment.tab.view.HomeFragment
+import edu.bluejack17_2.water18.fragment.customer.tab.view.HistoryFragment
+import edu.bluejack17_2.water18.fragment.HomeFragment
 
 class HomeTabAdapter(private val fm: FragmentManager, private val tabsCount: Int) : FragmentStatePagerAdapter(fm)
 {

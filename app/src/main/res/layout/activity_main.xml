@@ -14,7 +14,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="edu.bluejack17_2.water18.fragment.tab.view.HomeFragment"
+        android:name="edu.bluejack17_2.water18.fragment.HomeFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="135dp"
