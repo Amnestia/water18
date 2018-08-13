@@ -10,11 +10,7 @@ import org.jetbrains.anko.toast
 
 class SignUpWithPhoneNumberActivity : AppCompatActivity(), View.OnClickListener
 {
-    private fun addListener()
-    {
-        val buttons= arrayOf(btn_sign_up)
-        buttons.forEach { it.setOnClickListener(this) }
-    }
+    private fun addListener() = arrayOf(btn_sign_up).forEach { it.setOnClickListener(this)  }
 
     override fun onCreate(savedInstanceState: Bundle?)
     {

@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import edu.bluejack17_2.water18.R
-import edu.bluejack17_2.water18.fragment.OrderFragment.OnListFragmentInteractionListener
+import edu.bluejack17_2.water18.fragment.customer.OrderFragment.OnListFragmentInteractionListener
 import edu.bluejack17_2.water18.fragment.tab.view.dummy.DummyContent.DummyItem
 
 /**

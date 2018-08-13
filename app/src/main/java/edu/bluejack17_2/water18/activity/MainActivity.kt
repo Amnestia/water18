@@ -8,8 +8,8 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import edu.bluejack17_2.water18.R
-import edu.bluejack17_2.water18.fragment.CartFragment
-import edu.bluejack17_2.water18.fragment.OrderFragment
+import edu.bluejack17_2.water18.fragment.customer.CartFragment
+import edu.bluejack17_2.water18.fragment.customer.OrderFragment
 import edu.bluejack17_2.water18.fragment.tab.view.HomeFragment
 import kotlinx.android.synthetic.main.drawer_navigation.*
 
