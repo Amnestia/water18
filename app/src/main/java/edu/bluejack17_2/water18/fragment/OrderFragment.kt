@@ -22,8 +22,6 @@ import edu.bluejack17_2.water18.fragment.tab.view.dummy.DummyContent.DummyItem
  */
 class OrderFragment : Fragment()
 {
-
-    // TODO: Customize parameters
     private var columnCount = 1
 
     private var listener: OnListFragmentInteractionListener? = null
