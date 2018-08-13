@@ -12,10 +12,7 @@ class HistoryFragment : Fragment(), View.OnClickListener
 {
     companion object
     {
-        fun newInstance(): HistoryFragment
-        {
-            return HistoryFragment()
-        }
+        fun newInstance() = HistoryFragment()
     }
 
     private fun initTabs()

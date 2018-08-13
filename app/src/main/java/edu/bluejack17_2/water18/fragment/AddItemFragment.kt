@@ -11,10 +11,7 @@ class AddItemFragment : Fragment(), View.OnClickListener
 {
     companion object
     {
-        fun newInstance(): AddItemFragment
-        {
-            return AddItemFragment()
-        }
+        fun newInstance() = AddItemFragment()
     }
 
     private fun addListener()

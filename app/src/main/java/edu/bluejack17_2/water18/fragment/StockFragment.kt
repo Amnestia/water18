@@ -11,10 +11,7 @@ class StockFragment : Fragment(), View.OnClickListener
 {
     companion object
     {
-        fun newInstance(): StockFragment
-        {
-            return StockFragment()
-        }
+        fun newInstance() = StockFragment()
     }
 
     private fun addListener()

@@ -13,10 +13,7 @@ class CartFragment : Fragment(), View.OnClickListener
 {
     companion object
     {
-        fun newInstance(): CartFragment
-        {
-            return CartFragment()
-        }
+        fun newInstance() = CartFragment()
     }
 
     private fun addListener()

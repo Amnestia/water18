@@ -16,10 +16,7 @@ class HomeFragment : Fragment(), View.OnClickListener, View.OnFocusChangeListene
 
     companion object
     {
-        fun newInstance(): HomeFragment
-        {
-            return HomeFragment()
-        }
+        fun newInstance() = HomeFragment()
     }
 
     private fun addListener()

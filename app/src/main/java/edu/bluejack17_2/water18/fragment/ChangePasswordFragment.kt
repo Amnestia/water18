@@ -13,10 +13,7 @@ class ChangePasswordFragment : Fragment(), View.OnClickListener
 {
     companion object
     {
-        fun newInstance(): ChangePasswordFragment
-        {
-            return ChangePasswordFragment()
-        }
+        fun newInstance() = ChangePasswordFragment()
     }
 
     private fun addListener()
