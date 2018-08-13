@@ -1,17 +1,13 @@
 package edu.bluejack17_2.water18.adapter
 
+
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import edu.bluejack17_2.water18.R
-
-
 import edu.bluejack17_2.water18.fragment.OrderFragment.OnListFragmentInteractionListener
 import edu.bluejack17_2.water18.fragment.tab.view.dummy.DummyContent.DummyItem
-
-import kotlinx.android.synthetic.main.fragment_order.view.*
 
 /**
  * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
@@ -42,8 +38,8 @@ class OrderAdapter(private val mValues: List<DummyItem>, private val mListener: 
     override fun onBindViewHolder(holder: ViewHolder, position: Int)
     {
         val item = mValues[position]
-        holder.mIdView.text = item.id
-        holder.mContentView.text = item.content
+        //holder.mIdView.text = item.id
+        //holder.mContentView.text = item.content
 
         with(holder.mView) {
             tag = item
@@ -55,12 +51,12 @@ class OrderAdapter(private val mValues: List<DummyItem>, private val mListener: 
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView)
     {
-        val mIdView: TextView = mView.item_number
-        val mContentView: TextView = mView.content
+        //val mIdView: TextView = mView.item_number
+        //val mContentView: TextView = mView.content
 
         override fun toString(): String
         {
-            return super.toString() + " '" + mContentView.text + "'"
+            return super.toString() + " '" //+ mContentView.text + "'"
         }
     }
 }

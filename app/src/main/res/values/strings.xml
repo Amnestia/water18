@@ -23,6 +23,9 @@
     <string name="history">History</string>
     <string name="edit_profile">Edit Profile</string>
 
+    <string name="cart">Cart</string>
+    <string name="order">Order</string>
+
     <string name="change_password">Change Password</string>
 
     <string name="quantity">Quantity</string>
