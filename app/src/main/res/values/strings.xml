@@ -25,6 +25,7 @@
 
     <string name="cart">Cart</string>
     <string name="order">Order</string>
+    <string name="stock_list">Stock List</string>
 
     <string name="change_password">Change Password</string>
 

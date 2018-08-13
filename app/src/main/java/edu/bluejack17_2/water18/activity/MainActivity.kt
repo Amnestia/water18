@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import edu.bluejack17_2.water18.R
 import edu.bluejack17_2.water18.fragment.CartFragment
+import edu.bluejack17_2.water18.fragment.OrderFragment
 import edu.bluejack17_2.water18.fragment.tab.view.HomeFragment
 import kotlinx.android.synthetic.main.drawer_navigation.*
 
@@ -51,6 +52,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         {
             R.id.nav_home -> HomeFragment.newInstance()
             R.id.nav_cart -> CartFragment.newInstance()
+            R.id.nav_order -> OrderFragment.newInstance()
             else -> null
         } ?: return false
 
