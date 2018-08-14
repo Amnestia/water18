@@ -7,7 +7,6 @@
     tools:context=".fragment.HomeFragment"
     android:background="@color/lightBlueBackground">
 
-
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

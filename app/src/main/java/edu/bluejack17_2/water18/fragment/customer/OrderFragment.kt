@@ -11,20 +11,19 @@ import android.view.View
 import android.view.ViewGroup
 import edu.bluejack17_2.water18.R
 import edu.bluejack17_2.water18.adapter.OrderAdapter
+import edu.bluejack17_2.water18.controller.ProductController
+import edu.bluejack17_2.water18.model.Product
 
-import edu.bluejack17_2.water18.fragment.tab.view.dummy.DummyContent
-import edu.bluejack17_2.water18.fragment.tab.view.dummy.DummyContent.DummyItem
-
-/**
- * A fragment representing a list of Items.
- * Activities containing this fragment MUST implement the
- * [OrderFragment.OnListFragmentInteractionListener] interface.
- */
 class OrderFragment : Fragment()
 {
     private var columnCount = 1
 
     private var listener: OnListFragmentInteractionListener? = null
+
+    companion object
+    {
+        fun newInstance() = OrderFragment()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -39,7 +38,6 @@ class OrderFragment : Fragment()
     {
         val view = inflater.inflate(R.layout.fragment_order_list, container, false)
 
-        // Set the adapter
         if(view is RecyclerView)
         {
             with(view) {
@@ -48,7 +46,7 @@ class OrderFragment : Fragment()
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = OrderAdapter(DummyContent.ITEMS, listener)
+                adapter = OrderAdapter(ProductController.items, listener)
             }
         }
         return view
@@ -73,25 +71,8 @@ class OrderFragment : Fragment()
         listener = null
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson
-     * [Communicating with Other Fragments](http://developer.android.com/training/basics/fragments/communicating.html)
-     * for more information.
-     */
     interface OnListFragmentInteractionListener
     {
-        // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: DummyItem?)
-    }
-
-    companion object
-    {
-        fun newInstance() = OrderFragment()
+        fun onListFragmentInteraction(item: Product?)
     }
 }
