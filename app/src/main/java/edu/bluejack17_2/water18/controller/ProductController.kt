@@ -20,4 +20,11 @@ object ProductController
         item_map.put(item.id, item)
     }
 
+    private object ProductFirebaseController
+    {
+        fun insertToFirebase(item: Product)
+        {
+
+        }
+    }
 }

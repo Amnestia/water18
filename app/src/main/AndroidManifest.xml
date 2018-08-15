@@ -21,8 +21,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.PhoneVerificationActivity"/>
-        <activity android:name=".activity.SignUpWithPhoneNumberActivity"/>
+        <activity android:name=".activity.PhoneVerificationActivity" />
+        <activity android:name=".activity.SignUpWithPhoneNumberActivity" />
         <activity android:name=".activity.AdminMainActivity" />
 
         <meta-data
@@ -44,7 +44,9 @@
 
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
-        </activity>\
+        </activity>
+        \
+        <activity android:name=".activity.CPanelActivity"></activity>
     </application>
 
 </manifest>
