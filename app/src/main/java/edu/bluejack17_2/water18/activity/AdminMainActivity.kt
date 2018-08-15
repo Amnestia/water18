@@ -13,7 +13,7 @@ import edu.bluejack17_2.water18.fragment.customer.CartFragment
 import edu.bluejack17_2.water18.fragment.customer.OrderFragment
 import kotlinx.android.synthetic.main.drawer_navigation.*
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener
+class AdminMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener
 {
 
     override fun onCreate(savedInstanceState: Bundle?)

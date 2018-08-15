@@ -55,7 +55,7 @@ class PhoneVerificationActivity : AppCompatActivity(), View.OnClickListener
         }
         else
         {
-            val intent= Intent(applicationContext,MainActivity::class.java)
+            val intent= Intent(applicationContext,AdminMainActivity::class.java)
             startActivity(intent)
         }
     }
