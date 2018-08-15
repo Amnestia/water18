@@ -1,6 +1,6 @@
 package edu.bluejack17_2.water18.model
 
-class Role(var id: String?, var role: String?)
+data class Role(var id: String, var role: String?,val timestamp: Timestamp)
 {
-
+    override fun toString(): String = id
 }

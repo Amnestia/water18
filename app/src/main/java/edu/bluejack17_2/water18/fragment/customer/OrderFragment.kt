@@ -11,7 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import edu.bluejack17_2.water18.R
 import edu.bluejack17_2.water18.adapter.OrderAdapter
-import edu.bluejack17_2.water18.controller.ProductController
+import edu.bluejack17_2.water18.controller.ProductListController
 import edu.bluejack17_2.water18.model.Product
 
 class OrderFragment : Fragment()
@@ -46,7 +46,7 @@ class OrderFragment : Fragment()
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = OrderAdapter(ProductController.items, listener)
+                adapter = OrderAdapter(ProductListController.items, listener)
             }
         }
         return view
