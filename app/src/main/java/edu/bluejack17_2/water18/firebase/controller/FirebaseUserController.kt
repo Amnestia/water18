@@ -14,4 +14,9 @@ object FirebaseUserController
     {
         FirebaseAuth.getInstance().updateCurrentUser(user)
     }
+
+    fun delUser(user: FirebaseUser)
+    {
+
+    }
 }

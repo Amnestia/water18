@@ -1,19 +1,21 @@
 package edu.bluejack17_2.water18.firebase.controller
 
 import edu.bluejack17_2.water18.firebase.Firebase
-import edu.bluejack17_2.water18.model.Product
+import edu.bluejack17_2.water18.model.TransactionHistory
+import java.util.*
 
 object FirebaseTransactionHistoryController
 {
     val db = Firebase.getReference("transaction_history")
-    fun insertProduct(item: Product)
+    fun insertProduct(history: TransactionHistory)
     {
         val id= db.push().key
-        db.child(id!!).setValue(item)
+        db.child(id!!).setValue(history)
     }
 
-    fun deleteProduct(item: Product)
+    fun deleteProduct(history: TransactionHistory)
     {
-
+        val id=history.id
+        db.child(id).child("timestamp").child("deleted_at").setValue(Calendar.getInstance())
     }
 }
