@@ -12,10 +12,7 @@ import kotlinx.android.synthetic.main.activity_phone_verification.*
 class PhoneVerificationActivity : AppCompatActivity(), View.OnClickListener
 {
     private fun addListener()
-    {
-        val buttons= arrayOf(btn_confirm, btn_resend)
-        buttons.forEach { it.setOnClickListener(this) }
-    }
+            = arrayOf(btn_confirm, btn_resend).forEach{ it.setOnClickListener(this) }
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -58,7 +55,7 @@ class PhoneVerificationActivity : AppCompatActivity(), View.OnClickListener
         }
         else
         {
-            val intent= Intent(applicationContext,MainActivity::class.java)
+            val intent= Intent(applicationContext,AdminMainActivity::class.java)
             startActivity(intent)
         }
     }

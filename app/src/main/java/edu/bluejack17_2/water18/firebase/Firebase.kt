@@ -1,19 +1,13 @@
 package edu.bluejack17_2.water18.firebase
 
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 object Firebase
 {
-    fun getCurrentUser() : FirebaseUser?
+    fun getReference(db: String):DatabaseReference
     {
-        return FirebaseAuth.getInstance().currentUser
+        return FirebaseDatabase.getInstance().getReference(db)
     }
-
-    fun setUser(user: FirebaseUser)
-    {
-        FirebaseAuth.getInstance().updateCurrentUser(user)
-    }
-
 }
 

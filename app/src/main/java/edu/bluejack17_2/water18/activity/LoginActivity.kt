@@ -26,23 +26,35 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener
     override fun onClick(src: View?)
     {
         when(src){
-            btn_sign_up->
-            {
-                val intent=Intent(applicationContext,SignUpWithPhoneNumberActivity::class.java)
-                startActivity(intent)
-            }
-            btn_login->
-            {
-                val phone=tf_phone_login.text
-                val password=pf_password.text
-                val intent=Intent(applicationContext,MainActivity::class.java)
-                startActivity(intent)
-            }
-            btn_login_facebook->
-            {
-
-            }
+            btn_sign_up->signUp()
+            btn_login->login()
+            btn_login_facebook->loginWithFacebook()
+            btn_login_google ->loginWithGoogle()
             else -> return
         }
+    }
+
+    fun signUp()
+    {
+        val intent=Intent(applicationContext,SignUpWithPhoneNumberActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun login()
+    {
+        val phone=tf_phone_login.text
+        val password=pf_password.text
+        val intent=Intent(applicationContext,AdminMainActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun loginWithFacebook()
+    {
+
+    }
+
+    fun loginWithGoogle()
+    {
+
     }
 }

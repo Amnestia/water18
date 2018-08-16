@@ -3,18 +3,14 @@ package edu.bluejack17_2.water18.activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.widget.Toast
 import edu.bluejack17_2.water18.R
 import edu.bluejack17_2.water18.firebase.PhoneNumberAuth
 import kotlinx.android.synthetic.main.activity_sign_up_with_phone_number.*
+import org.jetbrains.anko.toast
 
 class SignUpWithPhoneNumberActivity : AppCompatActivity(), View.OnClickListener
 {
-    private fun addListener()
-    {
-        val buttons= arrayOf(btn_sign_up)
-        buttons.forEach { it.setOnClickListener(this) }
-    }
+    private fun addListener() = arrayOf(btn_sign_up).forEach { it.setOnClickListener(this)  }
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -27,10 +23,7 @@ class SignUpWithPhoneNumberActivity : AppCompatActivity(), View.OnClickListener
     {
         when(src)
         {
-            btn_sign_up->
-            {
-                signUp()
-            }
+            btn_sign_up -> signUp()
             else->return
         }
     }
@@ -40,7 +33,8 @@ class SignUpWithPhoneNumberActivity : AppCompatActivity(), View.OnClickListener
         val phone=tfPhoneNumber.text.toString()
         if(phone.isEmpty())
         {
-            Toast.makeText(this,"Please enter your phone number!",Toast.LENGTH_SHORT)
+            toast("Please enter your phone number!")
+            return
         }
         PhoneNumberAuth.verifyPhoneNumber(phone,this)
     }
