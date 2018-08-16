@@ -11,10 +11,12 @@ import edu.bluejack17_2.water18.R
 import edu.bluejack17_2.water18.fragment.customer.CartFragment
 import edu.bluejack17_2.water18.fragment.customer.OrderFragment
 import edu.bluejack17_2.water18.fragment.customer.tab.view.HomeHistoryParentFragment
+import edu.bluejack17_2.water18.model.Product
 import kotlinx.android.synthetic.main.drawer_navigation.*
 import org.jetbrains.anko.toast
 
-class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener
+class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
+                             OrderFragment.OnListFragmentInteractionListener
 {
 
     override fun onCreate(savedInstanceState: Bundle?)
@@ -36,6 +38,7 @@ class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationIte
 
     private fun initDrawer()
     {
+        navigation_view.setNavigationItemSelectedListener(this)
         val toggle = ActionBarDrawerToggle(this, drawer_navigation_layout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         if(drawer_navigation_layout==null)
@@ -45,7 +48,6 @@ class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationIte
         }
         drawer_navigation_layout.addDrawerListener(toggle)
         toggle.syncState()
-        navigation_view.setNavigationItemSelectedListener(this)
     }
 
     override fun onBackPressed()
@@ -75,8 +77,14 @@ class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationIte
             replace(R.id.content_frame,fragment as Fragment)
             commit()
         }
-        drawer_navigation_layout.closeDrawers()
+        //drawer_navigation_layout.closeDrawers()
 
         return true
     }
+
+    override fun onListFragmentInteraction(item: Product?)
+    {
+
+    }
+
 }
