@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import edu.bluejack17_2.water18.activity.PhoneVerificationActivity
+import edu.bluejack17_2.water18.firebase.controller.FirebaseUserController
 import java.util.concurrent.TimeUnit
 
 object PhoneNumberAuth
@@ -59,7 +60,7 @@ object PhoneNumberAuth
             auth.signInWithCredential(credential).addOnCompleteListener(activity) { task ->
                 if(task.isSuccessful)
                 {
-                    Firebase.setUser(task.result.user)
+                    FirebaseUserController.setUser(task.result.user)
                     ret=true
                 }
                 else

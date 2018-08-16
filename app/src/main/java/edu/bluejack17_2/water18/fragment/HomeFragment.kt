@@ -2,7 +2,7 @@ package edu.bluejack17_2.water18.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.text.Editable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,16 +29,16 @@ class HomeFragment : Fragment(), View.OnClickListener, View.OnFocusChangeListene
 
     private fun showMode()
     {
-        txt_user_address.visibility=TextView.VISIBLE
         tf_user_address.visibility=EditText.INVISIBLE
-        tf_user_address.text=txt_user_address.text as Editable?
+        txt_user_address.visibility=TextView.VISIBLE
+        txt_user_address.text=tf_user_address.text
     }
 
     private fun editMode()
     {
-        tf_user_address.text=txt_user_address.text as Editable?
-        txt_user_address.visibility=TextView.INVISIBLE
+        tf_user_address.setText(txt_user_address.text,TextView.BufferType.EDITABLE)
         tf_user_address.visibility=EditText.VISIBLE
+        txt_user_address.visibility=TextView.INVISIBLE
     }
 
     override fun onCreate(savedInstanceState: Bundle?)
@@ -49,10 +49,16 @@ class HomeFragment : Fragment(), View.OnClickListener, View.OnFocusChangeListene
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+    override fun onActivityCreated(savedInstanceState: Bundle?)
     {
+        super.onActivityCreated(savedInstanceState)
+        Log.w("Home","H")
         addListener()
         showMode()
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+    {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 

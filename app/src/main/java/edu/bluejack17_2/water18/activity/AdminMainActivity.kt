@@ -26,8 +26,9 @@ class AdminMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
     private fun initDrawer()
     {
-        val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawer_layout.addDrawerListener(toggle)
+        val toggle = ActionBarDrawerToggle(this, drawer_navigation_layout,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        drawer_navigation_layout.addDrawerListener(toggle)
         toggle.syncState()
 
         navigation_view.setNavigationItemSelectedListener(this)
@@ -35,9 +36,9 @@ class AdminMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
     override fun onBackPressed()
     {
-        if(drawer_layout.isDrawerOpen(GravityCompat.START))
+        if(drawer_navigation_layout.isDrawerOpen(GravityCompat.START))
         {
-            drawer_layout.closeDrawer(GravityCompat.START)
+            drawer_navigation_layout.closeDrawer(GravityCompat.START)
         }
         else
         {
@@ -60,7 +61,7 @@ class AdminMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             replace(R.id.content_frame,fragment as Fragment)
             commit()
         }
-        drawer_layout.closeDrawers()
+        drawer_navigation_layout.closeDrawers()
 
         return true
     }

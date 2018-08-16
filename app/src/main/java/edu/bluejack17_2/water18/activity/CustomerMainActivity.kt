@@ -12,30 +12,47 @@ import edu.bluejack17_2.water18.fragment.customer.CartFragment
 import edu.bluejack17_2.water18.fragment.customer.OrderFragment
 import edu.bluejack17_2.water18.fragment.customer.tab.view.HomeHistoryParentFragment
 import kotlinx.android.synthetic.main.drawer_navigation.*
+import org.jetbrains.anko.toast
 
 class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener
 {
+
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_admin_main)
+        setContentView(R.layout.activity_customer_main)
         setSupportActionBar(toolbar)
         initDrawer()
+        initFragment()
+    }
+
+    private fun initFragment()
+    {
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.content_frame,HomeHistoryParentFragment.newInstance() as Fragment)
+            commit()
+        }
     }
 
     private fun initDrawer()
     {
-        val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawer_layout.addDrawerListener(toggle)
+        val toggle = ActionBarDrawerToggle(this, drawer_navigation_layout, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        if(drawer_navigation_layout==null)
+        {
+            toast("null")
+            return
+        }
+        drawer_navigation_layout.addDrawerListener(toggle)
         toggle.syncState()
         navigation_view.setNavigationItemSelectedListener(this)
     }
 
     override fun onBackPressed()
     {
-        if(drawer_layout.isDrawerOpen(GravityCompat.START))
+        if(drawer_navigation_layout.isDrawerOpen(GravityCompat.START))
         {
-            drawer_layout.closeDrawer(GravityCompat.START)
+            drawer_navigation_layout.closeDrawer(GravityCompat.START)
         }
         else
         {
@@ -58,7 +75,7 @@ class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationIte
             replace(R.id.content_frame,fragment as Fragment)
             commit()
         }
-        drawer_layout.closeDrawers()
+        drawer_navigation_layout.closeDrawers()
 
         return true
     }
