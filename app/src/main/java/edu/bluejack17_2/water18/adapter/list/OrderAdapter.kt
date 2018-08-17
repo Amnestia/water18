@@ -1,4 +1,4 @@
-package edu.bluejack17_2.water18.adapter
+package edu.bluejack17_2.water18.adapter.list
 
 
 import android.support.v7.widget.RecyclerView
@@ -7,11 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import edu.bluejack17_2.water18.R
-import edu.bluejack17_2.water18.fragment.customer.OrderFragment.OnListFragmentInteractionListener
+import edu.bluejack17_2.water18.fragment.customer.OrderFragment
 import edu.bluejack17_2.water18.model.Product
 import kotlinx.android.synthetic.main.fragment_order.view.*
 
-class OrderAdapter(private val mValues: List<Product>, private val mListener: OnListFragmentInteractionListener?) : RecyclerView.Adapter<OrderAdapter.ViewHolder>()
+class OrderAdapter(private val mValues: List<Product>, private val mListener: OrderFragment.OnListFragmentInteractionListener?) : RecyclerView.Adapter<OrderAdapter.ViewHolder>()
 {
 
     private val mOnClickListener: View.OnClickListener

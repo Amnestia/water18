@@ -9,7 +9,7 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/drawer_navigation"
+        layout="@layout/drawer_navigation_admin"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

@@ -23,9 +23,11 @@
     <string name="history">History</string>
     <string name="edit_profile">Edit Profile</string>
 
+    <string name="user">User</string>
     <string name="cart">Cart</string>
     <string name="order">Order</string>
     <string name="stock_list">Stock List</string>
+    <string name="sign_out">Sign Out</string>
 
     <string name="change_password">Change Password</string>
 
