@@ -2,16 +2,17 @@ package edu.bluejack17_2.water18.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.text.Editable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import edu.bluejack17_2.water18.R
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment : Fragment(), View.OnClickListener, View.OnFocusChangeListener
+class HomeFragment : Fragment(), View.OnClickListener
 {
 
     companion object
@@ -21,24 +22,26 @@ class HomeFragment : Fragment(), View.OnClickListener, View.OnFocusChangeListene
 
     private fun addListener()
     {
-        var buttons=arrayOf(btnChangePassword,btnEdit)
+        var buttons=arrayOf(btnChangePassword,btnEdit,btnSave)
         buttons.forEach { it.setOnClickListener(this)  }
-
-        tf_user_address.onFocusChangeListener = this
     }
 
     private fun showMode()
     {
-        txt_user_address.visibility=TextView.VISIBLE
+        btnEdit.visibility=Button.VISIBLE
+        btnSave.visibility=Button.INVISIBLE
         tf_user_address.visibility=EditText.INVISIBLE
-        tf_user_address.text=txt_user_address.text as Editable?
+        txt_user_address.visibility=TextView.VISIBLE
+        txt_user_address.text=tf_user_address.text
     }
 
     private fun editMode()
     {
-        tf_user_address.text=txt_user_address.text as Editable?
-        txt_user_address.visibility=TextView.INVISIBLE
+        btnEdit.visibility=Button.INVISIBLE
+        btnSave.visibility=Button.VISIBLE
+        tf_user_address.setText(txt_user_address.text,TextView.BufferType.EDITABLE)
         tf_user_address.visibility=EditText.VISIBLE
+        txt_user_address.visibility=TextView.INVISIBLE
     }
 
     override fun onCreate(savedInstanceState: Bundle?)
@@ -49,10 +52,16 @@ class HomeFragment : Fragment(), View.OnClickListener, View.OnFocusChangeListene
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+    override fun onActivityCreated(savedInstanceState: Bundle?)
     {
+        super.onActivityCreated(savedInstanceState)
+        Log.w("Home","H")
         addListener()
         showMode()
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+    {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
@@ -62,6 +71,7 @@ class HomeFragment : Fragment(), View.OnClickListener, View.OnFocusChangeListene
         {
             btnChangePassword->changePassword()
             btnEdit->edit()
+            btnSave->save()
             else->return
         }
     }
@@ -71,25 +81,15 @@ class HomeFragment : Fragment(), View.OnClickListener, View.OnFocusChangeListene
 
     }
 
+    fun save()
+    {
+        showMode()
+        updateAddress(tf_user_address.text.toString())
+    }
+
     fun edit()
     {
         editMode()
-    }
-
-    override fun onFocusChange(src: View?, condition: Boolean)
-    {
-        when(src)
-        {
-            tf_user_address->
-            {
-                if(!condition)
-                {
-                    showMode()
-                    updateAddress(tf_user_address.text.toString())
-                }
-            }
-            else->return
-        }
     }
 
     fun updateAddress(address: String?)

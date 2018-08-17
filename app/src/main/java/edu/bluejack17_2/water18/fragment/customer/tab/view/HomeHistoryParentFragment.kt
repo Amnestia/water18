@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,7 +25,7 @@ class HomeHistoryParentFragment : Fragment(), View.OnClickListener
         var viewPager = view?.findViewById<ViewPager>(R.id.pager)
         adapter.addFragment(HomeFragment.newInstance(),"Home")
         adapter.addFragment(HistoryFragment.newInstance(),"History")
-        viewPager?.adapter =adapter
+        viewPager?.adapter=adapter
 
         var tabLayout = view?.findViewById<TabLayout>(R.id.tabs)
         tabLayout?.setupWithViewPager(viewPager)
@@ -38,10 +39,16 @@ class HomeHistoryParentFragment : Fragment(), View.OnClickListener
         }
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?)
+    {
+        super.onActivityCreated(savedInstanceState)
+        Log.w("Home History","HH")
+        initTabs()
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
-        initTabs()
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(R.layout.fragment_home_history_parent, container, false)
     }
 
     override fun onClick(src: View?)
