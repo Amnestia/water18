@@ -1,4 +1,4 @@
-package edu.bluejack17_2.water18.fragment.admin
+package edu.bluejack17_2.water18.fragment.ownercpanel
 
 import android.content.Context
 import android.os.Bundle
@@ -10,12 +10,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import edu.bluejack17_2.water18.R
-import edu.bluejack17_2.water18.adapter.list.ProductStockAdapter
-import edu.bluejack17_2.water18.controller.ProductListController
-import edu.bluejack17_2.water18.fragment.customer.OrderFragment
-import edu.bluejack17_2.water18.model.Product
+import edu.bluejack17_2.water18.adapter.list.UserAdapter
+import edu.bluejack17_2.water18.controller.UserListController
+import edu.bluejack17_2.water18.model.User
 
-class StockFragment : Fragment()
+class UserControlFragment : Fragment()
 {
     private var columnCount = 1
 
@@ -23,7 +22,7 @@ class StockFragment : Fragment()
 
     companion object
     {
-        fun newInstance() = OrderFragment()
+        fun newInstance() = UserControlFragment()
     }
 
     override fun onCreate(savedInstanceState: Bundle?)
@@ -47,7 +46,7 @@ class StockFragment : Fragment()
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = ProductStockAdapter(ProductListController.items, listener)
+                adapter = UserAdapter(UserListController.items, listener)
             }
         }
         return view
@@ -74,6 +73,6 @@ class StockFragment : Fragment()
 
     interface OnListFragmentInteractionListener
     {
-        fun onListFragmentInteraction(item: Product?)
+        fun onListFragmentInteraction(user: User?)
     }
 }
