@@ -25,4 +25,9 @@ class HomeTabAdapter(private val fm: FragmentManager, private val tabsCount: Int
         fragments.add(fragment)
         fragmentsTitle.add(title)
     }
+
+    override fun getPageTitle(position: Int): CharSequence?
+    {
+        return fragmentsTitle.get(position)
+    }
 }

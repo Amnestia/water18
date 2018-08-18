@@ -1,4 +1,4 @@
-package edu.bluejack17_2.water18.fragment.customer.tab.view
+package edu.bluejack17_2.water18.fragment.ownercpanel
 
 import android.content.Context
 import android.os.Bundle
@@ -10,11 +10,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import edu.bluejack17_2.water18.R
-import edu.bluejack17_2.water18.adapter.list.TransactionHistoryAdapter
-import edu.bluejack17_2.water18.controller.TransactionHistoryListController
-import edu.bluejack17_2.water18.model.TransactionHistory
+import edu.bluejack17_2.water18.adapter.list.UserAdapter
+import edu.bluejack17_2.water18.controller.UserListController
+import edu.bluejack17_2.water18.model.User
 
-class HistoryFragment : Fragment()
+class UserControlFragment : Fragment()
 {
     private var columnCount = 1
 
@@ -22,7 +22,7 @@ class HistoryFragment : Fragment()
 
     companion object
     {
-        fun newInstance() = HistoryFragment()
+        fun newInstance() = UserControlFragment()
     }
 
     override fun onCreate(savedInstanceState: Bundle?)
@@ -36,7 +36,7 @@ class HistoryFragment : Fragment()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
-        val view = inflater.inflate(R.layout.fragment_history_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_order_list, container, false)
 
         if(view is RecyclerView)
         {
@@ -46,7 +46,7 @@ class HistoryFragment : Fragment()
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = TransactionHistoryAdapter(TransactionHistoryListController.items, listener)
+                adapter = UserAdapter(UserListController.items, listener)
             }
         }
         return view
@@ -73,6 +73,6 @@ class HistoryFragment : Fragment()
 
     interface OnListFragmentInteractionListener
     {
-        fun onListFragmentInteraction(history: TransactionHistory?)
+        fun onListFragmentInteraction(user: User?)
     }
 }

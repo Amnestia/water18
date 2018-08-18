@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import edu.bluejack17_2.water18.R
+import edu.bluejack17_2.water18.firebase.controller.FirebaseUserController
 import edu.bluejack17_2.water18.fragment.customer.CartFragment
 import edu.bluejack17_2.water18.fragment.customer.OrderFragment
 import edu.bluejack17_2.water18.fragment.customer.tab.view.HomeHistoryParentFragment
@@ -70,6 +71,10 @@ class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationIte
                 R.id.nav_home -> HomeHistoryParentFragment.newInstance()
                 R.id.nav_cart -> CartFragment.newInstance()
                 R.id.nav_order -> OrderFragment.newInstance()
+                R.id.nav_sign_out -> {
+                    signOut()
+                    return false
+                }
                 else -> null
             } ?: return false
 
@@ -85,6 +90,11 @@ class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationIte
     override fun onListFragmentInteraction(item: Product?)
     {
 
+    }
+
+    fun signOut()
+    {
+        FirebaseUserController.signOut()
     }
 
 }

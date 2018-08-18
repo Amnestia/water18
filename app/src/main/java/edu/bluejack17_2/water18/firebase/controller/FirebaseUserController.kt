@@ -5,9 +5,11 @@ import com.google.firebase.auth.FirebaseUser
 
 object FirebaseUserController
 {
+    val auth=FirebaseAuth.getInstance()
+
     fun getCurrentUser() : FirebaseUser?
     {
-        return FirebaseAuth.getInstance().currentUser
+        return auth.currentUser
     }
 
     fun setUser(user: FirebaseUser)
@@ -18,5 +20,10 @@ object FirebaseUserController
     fun delUser(user: FirebaseUser)
     {
 
+    }
+
+    fun signOut()
+    {
+        auth.signOut()
     }
 }

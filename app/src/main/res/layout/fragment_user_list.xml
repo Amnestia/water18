@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lightBlueBackground"
-    tools:context=".activity.CustomerMainActivity">
+    tools:context=".activity.CPanelActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list"
-        android:name="edu.bluejack17_2.water18.fragment.tab.view.HistoryFragment"
+        android:name="edu.bluejack17_2.water18.fragment.ownercpanel.UserControlFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="LinearLayoutManager"
@@ -18,7 +18,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:context=".fragment.customer.tab.view.HistoryFragment"
+        tools:context=".fragment.ownercpanel.UserControlFragment"
         tools:listitem="@layout/fragment_order">
 
     </android.support.v7.widget.RecyclerView>
