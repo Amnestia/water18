@@ -10,7 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import edu.bluejack17_2.water18.R
-import edu.bluejack17_2.water18.adapter.list.UserAdapter
+import edu.bluejack17_2.water18.adapter.list.ownercpanel.UserAdapter
 import edu.bluejack17_2.water18.controller.UserListController
 import edu.bluejack17_2.water18.model.User
 

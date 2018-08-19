@@ -10,7 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import edu.bluejack17_2.water18.R
-import edu.bluejack17_2.water18.adapter.list.ProductStockAdapter
+import edu.bluejack17_2.water18.adapter.list.admin.ProductStockAdapter
 import edu.bluejack17_2.water18.controller.ProductListController
 import edu.bluejack17_2.water18.fragment.customer.OrderFragment
 import edu.bluejack17_2.water18.model.Product

@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".fragment.ownercpanel.UserControlFragment"
-        tools:listitem="@layout/fragment_order">
+        tools:listitem="@layout/item_order">
 
     </android.support.v7.widget.RecyclerView>
 

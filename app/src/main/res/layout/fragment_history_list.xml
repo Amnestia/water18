@@ -9,7 +9,7 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list"
-        android:name="edu.bluejack17_2.water18.fragment.tab.view.HistoryFragment"
+        android:name="edu.bluejack17_2.water18.fragment.customer.tab.view.HistoryFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="LinearLayoutManager"
@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".fragment.customer.tab.view.HistoryFragment"
-        tools:listitem="@layout/fragment_order">
+        tools:listitem="@layout/item_order">
 
     </android.support.v7.widget.RecyclerView>
 
