@@ -1,4 +1,4 @@
-package edu.bluejack17_2.water18.adapter.list.admin
+package edu.bluejack17_2.water18.adapter.list
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater

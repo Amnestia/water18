@@ -10,13 +10,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import edu.bluejack17_2.water18.R
-import edu.bluejack17_2.water18.model.User
+import edu.bluejack17_2.water18.adapter.list.ProductStockAdapter
+import edu.bluejack17_2.water18.controller.ProductListController
+import edu.bluejack17_2.water18.fragment.admin.StockFragment
 
 class ProductControlFragment : Fragment()
 {
     private var columnCount = 1
 
-    private var listener: OnListFragmentInteractionListener? = null
+    private var listener: StockFragment.OnListFragmentInteractionListener? = null
 
     companion object
     {
@@ -44,7 +46,7 @@ class ProductControlFragment : Fragment()
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                //adapter = ProductStockAdapter(ProductListController.items, listener)
+                adapter = ProductStockAdapter(ProductListController.items, listener)
             }
         }
         return view
@@ -53,7 +55,7 @@ class ProductControlFragment : Fragment()
     override fun onAttach(context: Context)
     {
         super.onAttach(context)
-        if(context is OnListFragmentInteractionListener)
+        if(context is StockFragment.OnListFragmentInteractionListener)
         {
             listener = context
         }
@@ -67,10 +69,5 @@ class ProductControlFragment : Fragment()
     {
         super.onDetach()
         listener = null
-    }
-
-    interface OnListFragmentInteractionListener
-    {
-        fun onListFragmentInteraction(user: User?)
     }
 }
