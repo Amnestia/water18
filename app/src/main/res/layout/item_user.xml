@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txt_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="6dp"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_user_role"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:text="TextView"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_user_name" />
+
+        <ImageButton
+            android:id="@+id/btnEdit"
+            android:layout_width="22dp"
+            android:layout_height="26dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="41dp"
+            android:background="@color/lightBlueBackground"
+            android:src="@drawable/ic_edit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/rg_role"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnSave"
+            android:layout_width="22dp"
+            android:layout_height="26dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="41dp"
+            android:background="@color/lightBlueBackground"
+            android:src="@drawable/ic_save"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/rg_role"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/rg_role"
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/txt_user_role"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_user_name">
+
+            <RadioButton
+                android:id="@+id/rb_admin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="RadioButton" />
+
+            <RadioButton
+                android:id="@+id/rb_customer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="RadioButton" />
+        </RadioGroup>
+    </android.support.constraint.ConstraintLayout>
+
+</LinearLayout>

@@ -10,7 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import edu.bluejack17_2.water18.R
-import edu.bluejack17_2.water18.adapter.list.TransactionHistoryAdapter
+import edu.bluejack17_2.water18.adapter.list.customer.TransactionHistoryAdapter
 import edu.bluejack17_2.water18.controller.TransactionHistoryListController
 import edu.bluejack17_2.water18.model.TransactionHistory
 

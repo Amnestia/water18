@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".fragment.customer.OrderFragment"
-        tools:listitem="@layout/fragment_order">
+        tools:listitem="@layout/item_order">
 
     </android.support.v7.widget.RecyclerView>
 
