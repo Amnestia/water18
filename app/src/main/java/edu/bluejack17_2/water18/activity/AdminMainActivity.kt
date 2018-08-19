@@ -8,8 +8,9 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import edu.bluejack17_2.water18.R
+import edu.bluejack17_2.water18.firebase.controller.FirebaseUserController
 import edu.bluejack17_2.water18.fragment.HomeFragment
-import edu.bluejack17_2.water18.fragment.customer.CartFragment
+import edu.bluejack17_2.water18.fragment.admin.StockFragment
 import edu.bluejack17_2.water18.fragment.customer.OrderFragment
 import kotlinx.android.synthetic.main.drawer_navigation.*
 
@@ -52,8 +53,12 @@ class AdminMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         when(item.itemId)
         {
             R.id.nav_home -> HomeFragment.newInstance()
-            R.id.nav_cart -> CartFragment.newInstance()
+            R.id.nav_stock -> StockFragment.newInstance()
             R.id.nav_order -> OrderFragment.newInstance()
+            R.id.nav_sign_out -> {
+                signOut()
+                return false
+            }
             else -> null
         } ?: return false
 
@@ -64,5 +69,10 @@ class AdminMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         drawer_navigation_layout.closeDrawers()
 
         return true
+    }
+
+    fun signOut()
+    {
+        FirebaseUserController.signOut()
     }
 }

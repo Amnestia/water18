@@ -36,7 +36,7 @@ class ProductControlFragment : Fragment()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
-        val view = inflater.inflate(R.layout.fragment_order_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_product_control_list, container, false)
 
         if(view is RecyclerView)
         {
