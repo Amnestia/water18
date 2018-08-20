@@ -12,13 +12,8 @@ import edu.bluejack17_2.water18.fragment.admin.StockFragment
 import edu.bluejack17_2.water18.model.Product
 import kotlinx.android.synthetic.main.item_stock.view.*
 
-class ProductStockAdapter(private val mValues: List<Product>, private val mListener: StockFragment.OnListFragmentInteractionListener?) : RecyclerView.Adapter<ProductStockAdapter.ViewHolder>(), View.OnClickListener
+class ProductStockAdapter(private val mValues: List<Product>, private val mListener: StockFragment.OnListFragmentInteractionListener?) : RecyclerView.Adapter<ProductStockAdapter.ViewHolder>()
 {
-    override fun onClick(p0: View?)
-    {
-
-    }
-
     private val mOnClickListener: View.OnClickListener
 
     init
@@ -42,9 +37,7 @@ class ProductStockAdapter(private val mValues: List<Product>, private val mListe
         holder.itemPrice.setText(item.price.toString(),TextView.BufferType.EDITABLE)
         holder.itemQuantity.setText(item.stock.toString(),TextView.BufferType.EDITABLE)
         holder.buttons[0].setOnClickListener{deleteItem(item)}
-
-        val updateString=arrayOf(holder.itemName.text.toString(),holder.itemPrice.text.toString(),holder.itemQuantity.text.toString())
-        holder.buttons[1].setOnClickListener{updateItem(item,updateString)}
+        holder.buttons[1].setOnClickListener{updateItem(item,holder)}
         with(holder.mView) {
             tag = item
             setOnClickListener(mOnClickListener)
@@ -66,11 +59,11 @@ class ProductStockAdapter(private val mValues: List<Product>, private val mListe
         ProductListController.delete(item)
     }
 
-    fun updateItem(item : Product, strings: Array<String>)
+    fun updateItem(item : Product, holder: ViewHolder)
     {
-        item.name=strings[0]
-        item.price=strings[1].toLongOrNull()
-        item.stock=strings[2].toLongOrNull()
+        item.name=holder.itemName.text.toString()
+        item.price=holder.itemPrice.text.toString().toLongOrNull()
+        item.stock=holder.itemQuantity.text.toString().toLongOrNull()
         ProductListController.update(item)
     }
 }
