@@ -44,7 +44,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener
     {
         val phone=tf_phone_login.text
         val password=pf_password.text
-        val intent=Intent(applicationContext,CustomerMainActivity::class.java)
+        //val intent=Intent(applicationContext,CustomerMainActivity::class.java)
+        val intent=Intent(applicationContext,AdminMainActivity::class.java)
         startActivity(intent)
     }
 

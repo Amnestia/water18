@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.CPanelActivity"
-    android:background="@color/lightBlueBackground">
+    android:background="@color/lightBlueBackground"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <include
         android:id="@+id/include"
