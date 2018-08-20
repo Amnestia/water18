@@ -14,6 +14,7 @@ import edu.bluejack17_2.water18.adapter.list.customer.OrderAdapter
 import edu.bluejack17_2.water18.controller.ProductListController
 import edu.bluejack17_2.water18.model.Product
 import kotlinx.android.synthetic.main.fragment_order_list.*
+import kotlinx.android.synthetic.main.fragment_order_list.view.*
 
 class OrderFragment : Fragment(), View.OnClickListener
 {
@@ -48,9 +49,9 @@ class OrderFragment : Fragment(), View.OnClickListener
     {
         val view = inflater.inflate(R.layout.fragment_order_list, container, false)
 
-        if(view is RecyclerView)
+        if(view.list is RecyclerView)
         {
-            with(view) {
+            with(view.list) {
                 layoutManager = when
                 {
                     columnCount <= 1 -> LinearLayoutManager(context)
@@ -58,6 +59,7 @@ class OrderFragment : Fragment(), View.OnClickListener
                 }
                 adapter = OrderAdapter(ProductListController.items, listener)
             }
+            view.list.adapter?.notifyDataSetChanged()
         }
         return view
     }
@@ -65,6 +67,7 @@ class OrderFragment : Fragment(), View.OnClickListener
     override fun onAttach(context: Context)
     {
         super.onAttach(context)
+        ProductListController.read()
         if(context is OnListFragmentInteractionListener)
         {
             listener = context
@@ -92,7 +95,10 @@ class OrderFragment : Fragment(), View.OnClickListener
 
     private fun placeOrder()
     {
-
+        activity?.supportFragmentManager?.beginTransaction()?.apply {
+            replace(R.id.content_frame,CartFragment.newInstance())
+            commit()
+        }
     }
 
 

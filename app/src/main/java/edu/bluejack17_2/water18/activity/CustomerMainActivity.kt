@@ -15,7 +15,6 @@ import edu.bluejack17_2.water18.model.Product
 import edu.bluejack17_2.water18.model.TransactionHistory
 import kotlinx.android.synthetic.main.drawer_navigation.*
 import org.jetbrains.anko.intentFor
-import org.jetbrains.anko.toast
 
 class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
                              OrderFragment.OnListFragmentInteractionListener, HistoryFragment.OnListFragmentInteractionListener
@@ -85,12 +84,12 @@ class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationIte
 
     override fun onListFragmentInteraction(item: Product?)
     {
-        toast(item.toString())
+
     }
 
     override fun onListFragmentInteraction(history: TransactionHistory?)
     {
-        toast(history.toString())
+
     }
 
 }

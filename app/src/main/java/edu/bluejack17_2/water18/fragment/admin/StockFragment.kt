@@ -58,6 +58,7 @@ class StockFragment : Fragment(), View.OnClickListener
                 }
                 adapter = ProductStockAdapter(ProductListController.items, listener)
             }
+            view.list.adapter?.notifyDataSetChanged()
         }
         return view
     }

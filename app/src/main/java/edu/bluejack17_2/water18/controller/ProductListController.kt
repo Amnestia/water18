@@ -44,6 +44,7 @@ object ProductListController
             {
                 Log.w("DBError",e.toString())
             }
+
         })
     }
 
