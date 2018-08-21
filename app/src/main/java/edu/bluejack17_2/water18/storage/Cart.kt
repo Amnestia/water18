@@ -1,9 +1,11 @@
 package edu.bluejack17_2.water18.storage
 
 import edu.bluejack17_2.water18.model.Product
+import java.util.*
 
 object Cart
 {
+    var items: MutableList<Product> = Vector()
     var itemMap: MutableMap<Product, Long> = HashMap()
 
     fun addToCart(item: Product,quantity: Long)
@@ -11,6 +13,16 @@ object Cart
         itemMap[item]=quantity
         if(itemMap[item]!!<1)
             itemMap.remove(item)
+    }
+
+    fun addToList()
+    {
+        items.clear()
+        itemMap.forEach { product, quantity ->
+            val item=product
+            item.stock=quantity
+            items.add(item)
+        }
     }
 
     fun deleteToCart(item: Product)
@@ -34,4 +46,10 @@ object Cart
     {
         itemMap.clear()
     }
+
+    fun getList() : List<Product>
+    {
+        return items
+    }
+
 }

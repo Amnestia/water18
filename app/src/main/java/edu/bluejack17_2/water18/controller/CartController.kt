@@ -24,4 +24,10 @@ object CartController
     {
         Cart.clear()
     }
+
+    fun getList(): List<Product>
+    {
+        Cart.addToList()
+        return Cart.getList()
+    }
 }
