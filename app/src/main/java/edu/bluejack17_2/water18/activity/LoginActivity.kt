@@ -4,11 +4,19 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import com.facebook.CallbackManager
 import edu.bluejack17_2.water18.R
 import kotlinx.android.synthetic.main.activity_login.*
+import com.facebook.FacebookException
+import com.facebook.login.LoginResult
+import com.facebook.FacebookCallback
+
+
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener
 {
+
+    val callbackManager = CallbackManager.Factory.create();
 
     private fun addListener()
     {
@@ -21,6 +29,22 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         addListener()
+
+        btn_login_facebook.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
+            override fun onSuccess(loginResult: LoginResult) {
+                // App code
+                val intent=Intent(applicationContext,CustomerMainActivity::class.java)
+                startActivity(intent)
+            }
+
+            override fun onCancel() {
+                // App code
+            }
+
+            override fun onError(exception: FacebookException) {
+                // App code
+            }
+        })
     }
 
     override fun onClick(src: View?)
@@ -58,5 +82,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener
     fun loginWithGoogle()
     {
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        callbackManager.onActivityResult(requestCode, resultCode, data)
+        super.onActivityResult(requestCode, resultCode, data)
     }
 }
