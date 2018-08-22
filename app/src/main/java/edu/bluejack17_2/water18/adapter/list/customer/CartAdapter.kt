@@ -29,8 +29,9 @@ class CartAdapter(private val mValues: List<Product>, private val mListener: Car
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
     {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_order, parent, false)
-        txtTotalPrice=view.txt_total_price
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_cart, parent, false)
+        val viewList = LayoutInflater.from(parent.context).inflate(R.layout.fragment_cart, parent, false)
+        txtTotalPrice=viewList.txt_total_price
         return ViewHolder(view)
     }
 
@@ -39,7 +40,7 @@ class CartAdapter(private val mValues: List<Product>, private val mListener: Car
         val item = mValues[position]
         holder.itemName.text = item.name
         holder.itemPrice.text = item.price.toString()
-        holder.itemQuantity.setText("0", TextView.BufferType.EDITABLE)
+        holder.itemQuantity.text=item.stock.toString()
 
         holder.btnRemove.setOnClickListener { deleteItem(item,holder) }
 
@@ -61,7 +62,7 @@ class CartAdapter(private val mValues: List<Product>, private val mListener: Car
 
     private fun updateTotalPrice()
     {
-        txtTotalPrice.setText(CartController.getTotalPrice().toString(), TextView.BufferType.EDITABLE)
+        txtTotalPrice.text=CartController.getTotalPrice().toString()
     }
 
     private fun deleteItem(item: Product, holder: ViewHolder)

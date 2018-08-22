@@ -1,5 +1,6 @@
 package edu.bluejack17_2.water18.storage
 
+import android.util.Log
 import edu.bluejack17_2.water18.model.Product
 import java.util.*
 
@@ -15,19 +16,29 @@ object Cart
             itemMap.remove(item)
     }
 
+    fun add(item: Product,quantity: Long)
+    {
+        item.stock=quantity
+        items.add(item)
+    }
+
     fun addToList()
     {
         items.clear()
-        itemMap.forEach { product, quantity ->
-            val item=product
-            item.stock=quantity
-            items.add(item)
-        }
+        for(item in itemMap)
+            add(item.key,item.value)
     }
 
-    fun deleteToCart(item: Product)
+    fun deleteFromCart(item: Product)
     {
-        itemMap.remove(item)
+        for(it in itemMap)
+        {
+            if(it.key.id==item.id)
+            {
+                itemMap.remove(it.key)
+                return
+            }
+        }
     }
 
     fun getRes(price: Long, quantity: Long) : Long
@@ -38,7 +49,9 @@ object Cart
     fun calculateTotalPrice():Long
     {
         var price:Long=0
-        itemMap.forEach{ product, quantity -> price.plus(getRes(product.price as Long,quantity)) }
+        for(item in itemMap)
+            price+=getRes(item.key.price as Long,item.value)
+        Log.w("total",price.toString())
         return price
     }
 
@@ -50,6 +63,12 @@ object Cart
     fun getList() : List<Product>
     {
         return items
+    }
+
+    fun checkInside()
+    {
+        for(item in itemMap)
+            Log.w("items",item.key.name+" "+item.value)
     }
 
 }

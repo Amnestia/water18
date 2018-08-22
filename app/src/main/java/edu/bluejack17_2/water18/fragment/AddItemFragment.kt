@@ -53,12 +53,32 @@ class AddItemFragment : Fragment(), View.OnClickListener
     fun addItem()
     {
         val name=tf_name.text.toString()
-        val price=tf_price.text.toString().toLongOrNull()
-        val stock=tf_quantity.text.toString().toLongOrNull()
+        var price=tf_price.text.toString().toLongOrNull()
+        var stock=tf_quantity.text.toString().toLongOrNull()
+        val ret=validate(name, price, stock)
+        if(!ret.equals("Clear"))
+        {
+            toast(ret)
+            return
+        }
         ProductListController.insert(Product("",name,price,stock, Timestamp()))
         tf_name.setText("", TextView.BufferType.EDITABLE)
         tf_price.setText("", TextView.BufferType.EDITABLE)
         tf_quantity.setText("", TextView.BufferType.EDITABLE)
         toast("Successfully added new item")
     }
+
+    fun validate(name:String,price:Long?,stock:Long?):String
+    {
+        return when
+        {
+            name.isNullOrEmpty()->"Name should not be empty"
+            price==null->"Price should not be empty"
+            price<0->"Price should not be negative"
+            stock==null->"Stock should not be empty"
+            stock<0->"Stock should not be negative"
+            else->"Clear"
+        }
+    }
+
 }

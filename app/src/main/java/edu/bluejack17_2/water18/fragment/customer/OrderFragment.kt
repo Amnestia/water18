@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import edu.bluejack17_2.water18.R
 import edu.bluejack17_2.water18.adapter.list.customer.OrderAdapter
 import edu.bluejack17_2.water18.controller.ProductListController
+import edu.bluejack17_2.water18.firebase.listener.OnGetDataListener
 import edu.bluejack17_2.water18.model.Product
 import kotlinx.android.synthetic.main.fragment_order_list.*
 import kotlinx.android.synthetic.main.fragment_order_list.view.*
@@ -22,6 +23,8 @@ class OrderFragment : Fragment(), View.OnClickListener
     private var columnCount = 1
 
     private var listener: OnListFragmentInteractionListener? = null
+
+    private var gdl:OnGetDataListener?=null
 
     private fun addListener() = arrayOf(btn_place_order).forEach { it.setOnClickListener(this) }
 
@@ -48,7 +51,6 @@ class OrderFragment : Fragment(), View.OnClickListener
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
         val view = inflater.inflate(R.layout.fragment_order_list, container, false)
-
         if(view.list is RecyclerView)
         {
             with(view.list) {

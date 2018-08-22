@@ -17,7 +17,8 @@ import kotlinx.android.synthetic.main.drawer_navigation.*
 import org.jetbrains.anko.intentFor
 
 class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
-                             OrderFragment.OnListFragmentInteractionListener, HistoryFragment.OnListFragmentInteractionListener
+                             OrderFragment.OnListFragmentInteractionListener, HistoryFragment.OnListFragmentInteractionListener,
+                             CartFragment.OnListFragmentInteractionListener
 {
     override fun onCreate(savedInstanceState: Bundle?)
     {

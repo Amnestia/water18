@@ -11,19 +11,19 @@ object FirebaseProductController
     {
         val id= db.push().key
         item.id= id!!
-        db.child(id!!).setValue(item)
+        db.child(id).setValue(item)
     }
 
     fun updateProduct(item: Product)
     {
         item.timestamp.updated_at=Date().toString()
-        db.child(item.id!!).setValue(item)
+        db.child(item.id).setValue(item)
     }
 
     fun deleteProduct(item: Product)
     {
         val id=item.id
-        db.child(id!!).child("timestamp").child("deleted_at").setValue(Date().toString())
+        db.child(id).child("timestamp").child("deleted_at").setValue(Date().toString())
     }
 
 }

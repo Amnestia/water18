@@ -13,8 +13,8 @@ import android.view.ViewGroup
 import edu.bluejack17_2.water18.R
 import edu.bluejack17_2.water18.adapter.list.customer.CartAdapter
 import edu.bluejack17_2.water18.controller.CartController
-import edu.bluejack17_2.water18.controller.ProductListController
 import edu.bluejack17_2.water18.model.Product
+import kotlinx.android.synthetic.main.fragment_cart.*
 import kotlinx.android.synthetic.main.fragment_order_list.*
 import kotlinx.android.synthetic.main.fragment_order_list.view.*
 
@@ -24,11 +24,11 @@ class CartFragment : Fragment(), View.OnClickListener
 
     private var listener: OnListFragmentInteractionListener? = null
 
-    private fun addListener() = arrayOf(btn_place_order).forEach { it.setOnClickListener(this) }
+    private fun addListener() = arrayOf(btn_checkout).forEach { it.setOnClickListener(this) }
 
     companion object
     {
-        fun newInstance() = OrderFragment()
+        fun newInstance() = CartFragment()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?)
@@ -69,7 +69,6 @@ class CartFragment : Fragment(), View.OnClickListener
     override fun onAttach(context: Context)
     {
         super.onAttach(context)
-        ProductListController.read()
         if(context is OnListFragmentInteractionListener)
         {
             listener = context

@@ -30,8 +30,9 @@ class OrderAdapter(private val mValues: List<Product>, private val mListener: Or
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
     {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_cart, parent, false)
-        txtTotalPrice=view.txt_total_price
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_order, parent, false)
+        val viewList = LayoutInflater.from(parent.context).inflate(R.layout.fragment_order_list, parent, false)
+        txtTotalPrice=viewList.txt_total_price
         return ViewHolder(view)
     }
 
@@ -63,13 +64,17 @@ class OrderAdapter(private val mValues: List<Product>, private val mListener: Or
 
     private fun updateTotalPrice()
     {
-        txtTotalPrice.setText(CartController.getTotalPrice().toString(),TextView.BufferType.EDITABLE)
+        txtTotalPrice.text=CartController.getTotalPrice().toString()
     }
 
     private fun updateItem(item: Product,holder: ViewHolder)
     {
         val quantity=holder.itemQuantity.text.toString().toLongOrNull()
-        CartController.add(item, quantity!!)
+        if(quantity!!>item.stock!!)
+        {
+            return
+        }
+        CartController.add(item, quantity)
         updateTotalPrice()
     }
 

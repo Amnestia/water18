@@ -36,7 +36,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener
 
     fun signUp()
     {
-        val intent=Intent(applicationContext,SignUpWithPhoneNumberActivity::class.java)
+        //val intent=Intent(applicationContext,SignUpWithPhoneNumberActivity::class.java)
+        val intent=Intent(applicationContext,CustomerMainActivity::class.java)
         startActivity(intent)
     }
 
