@@ -10,18 +10,55 @@ import kotlinx.android.synthetic.main.activity_login.*
 import com.facebook.FacebookException
 import com.facebook.login.LoginResult
 import com.facebook.FacebookCallback
+import com.facebook.AccessToken
+import com.facebook.login.LoginManager
+import java.util.*
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import android.R.attr.data
+import com.google.android.gms.auth.api.Auth
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.common.api.GoogleApiClient
+import com.google.android.gms.common.ConnectionResult
+import android.support.annotation.NonNull
+import android.util.Log
 
 
-
-class LoginActivity : AppCompatActivity(), View.OnClickListener
+class LoginActivity : AppCompatActivity(), View.OnClickListener, GoogleApiClient.OnConnectionFailedListener
 {
+    private val RC_SIGN_IN = 9001
+    private val callbackManager = CallbackManager.Factory.create()
+    private var mGoogleApiClient: GoogleApiClient? = null
 
-    val callbackManager = CallbackManager.Factory.create();
+    override fun onConnectionFailed(connectionResult: ConnectionResult) {
+        Log.d("Umm", "onConnectionFailed: " + connectionResult)
+    }
 
     private fun addListener()
     {
         val buttons=arrayOf(btn_login ,btn_login_facebook ,btn_login_google ,btn_sign_up)
         buttons.forEach { it.setOnClickListener(this) }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        LoginManager.getInstance().logOut()
+        //check if there is a Facebook Acount signed in
+        val accessToken = AccessToken.getCurrentAccessToken()
+        val isLoggedIn = accessToken != null && !accessToken.isExpired
+        if(isLoggedIn){
+            LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"))
+        }
+
+        //check if there is a Google Acount signed in
+        val account = GoogleSignIn.getLastSignedInAccount(this)
+        //if account is not null means a user has signed in before
+        if (account != null) {
+            //go to main activity
+            val intent=Intent(applicationContext,CustomerMainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?)
@@ -30,6 +67,15 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener
         setContentView(R.layout.activity_login)
         addListener()
 
+        //google
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build()
+        mGoogleApiClient = GoogleApiClient.Builder(this).enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build()
+
+        //facebook
         btn_login_facebook.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
             override fun onSuccess(loginResult: LoginResult) {
                 // App code
@@ -45,6 +91,19 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener
                 // App code
             }
         })
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        //facebook
+        callbackManager.onActivityResult(requestCode, resultCode, data)
+
+        //google
+        if (requestCode == RC_SIGN_IN) {
+            //val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            val intent=Intent(applicationContext,CustomerMainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onClick(src: View?)
@@ -81,11 +140,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener
 
     fun loginWithGoogle()
     {
-
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        callbackManager.onActivityResult(requestCode, resultCode, data)
-        super.onActivityResult(requestCode, resultCode, data)
+        val signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient)
+        startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 }
