@@ -4,11 +4,36 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import com.facebook.CallbackManager
 import edu.bluejack17_2.water18.R
 import kotlinx.android.synthetic.main.activity_login.*
+import com.facebook.FacebookException
+import com.facebook.login.LoginResult
+import com.facebook.FacebookCallback
+import com.facebook.AccessToken
+import com.facebook.login.LoginManager
+import java.util.*
 
-class LoginActivity : AppCompatActivity(), View.OnClickListener
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import android.R.attr.data
+import com.google.android.gms.auth.api.Auth
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.common.api.GoogleApiClient
+import com.google.android.gms.common.ConnectionResult
+import android.support.annotation.NonNull
+import android.util.Log
+
+
+class LoginActivity : AppCompatActivity(), View.OnClickListener, GoogleApiClient.OnConnectionFailedListener
 {
+    private val RC_SIGN_IN = 9001
+    private val callbackManager = CallbackManager.Factory.create()
+    private var mGoogleApiClient: GoogleApiClient? = null
+
+    override fun onConnectionFailed(connectionResult: ConnectionResult) {
+        Log.d("Umm", "onConnectionFailed: " + connectionResult)
+    }
 
     private fun addListener()
     {
@@ -16,11 +41,69 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener
         buttons.forEach { it.setOnClickListener(this) }
     }
 
+    override fun onStart() {
+        super.onStart()
+        LoginManager.getInstance().logOut()
+        //check if there is a Facebook Acount signed in
+        val accessToken = AccessToken.getCurrentAccessToken()
+        val isLoggedIn = accessToken != null && !accessToken.isExpired
+        if(isLoggedIn){
+            LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"))
+        }
+
+        //check if there is a Google Acount signed in
+        val account = GoogleSignIn.getLastSignedInAccount(this)
+        //if account is not null means a user has signed in before
+        if (account != null) {
+            //go to main activity
+            val intent=Intent(applicationContext,CustomerMainActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         addListener()
+
+        //google
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build()
+        mGoogleApiClient = GoogleApiClient.Builder(this).enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build()
+
+        //facebook
+        btn_login_facebook.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
+            override fun onSuccess(loginResult: LoginResult) {
+                // App code
+                val intent=Intent(applicationContext,CustomerMainActivity::class.java)
+                startActivity(intent)
+            }
+
+            override fun onCancel() {
+                // App code
+            }
+
+            override fun onError(exception: FacebookException) {
+                // App code
+            }
+        })
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        //facebook
+        callbackManager.onActivityResult(requestCode, resultCode, data)
+
+        //google
+        if (requestCode == RC_SIGN_IN) {
+            //val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            val intent=Intent(applicationContext,CustomerMainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onClick(src: View?)
@@ -36,7 +119,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener
 
     fun signUp()
     {
-        val intent=Intent(applicationContext,SignUpWithPhoneNumberActivity::class.java)
+        //val intent=Intent(applicationContext,SignUpWithPhoneNumberActivity::class.java)
+        val intent=Intent(applicationContext,CustomerMainActivity::class.java)
         startActivity(intent)
     }
 
@@ -44,7 +128,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener
     {
         val phone=tf_phone_login.text
         val password=pf_password.text
-        val intent=Intent(applicationContext,CustomerMainActivity::class.java)
+        //val intent=Intent(applicationContext,CustomerMainActivity::class.java)
+        val intent=Intent(applicationContext,AdminMainActivity::class.java)
         startActivity(intent)
     }
 
@@ -55,6 +140,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener
 
     fun loginWithGoogle()
     {
-
+        val signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient)
+        startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 }

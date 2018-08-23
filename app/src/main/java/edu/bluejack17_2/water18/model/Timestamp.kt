@@ -9,9 +9,9 @@ class Timestamp
     var deleted_at: String?
     init
     {
-        created_at=Calendar.getInstance().toString()
-        updated_at=Calendar.getInstance().toString()
-        deleted_at=null
+        created_at=Date().toString()
+        updated_at=Date().toString()
+        deleted_at=""
     }
     override fun toString(): String = created_at+" "+updated_at
 }

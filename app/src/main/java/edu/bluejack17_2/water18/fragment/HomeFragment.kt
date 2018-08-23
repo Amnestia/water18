@@ -2,7 +2,6 @@ package edu.bluejack17_2.water18.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -55,7 +54,6 @@ class HomeFragment : Fragment(), View.OnClickListener
     override fun onActivityCreated(savedInstanceState: Bundle?)
     {
         super.onActivityCreated(savedInstanceState)
-        Log.w("Home","H")
         addListener()
         showMode()
     }

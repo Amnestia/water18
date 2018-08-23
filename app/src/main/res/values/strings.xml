@@ -33,15 +33,18 @@
 
     <string name="price">Price</string>
     <string name="quantity">Quantity</string>
+    <string name="product_control">Product Control</string>
+    <string name="add_item">Add Item</string>
 
     <string name="total_price">Total Price</string>
     <string name="checkout">Checkout</string>
     <string name="place_order">Place Order</string>
 
     <string name="logo_desc">app logo</string>
-    <string name="facebook_app_id">1856824864411243</string>
 
-    <string name="fb_login_protocol_scheme">fb1856824864411243</string>
+    <string name="facebook_app_id">232840567417687</string>
+    <string name="fb_login_protocol_scheme">fb232840567417687</string>
+
     <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>

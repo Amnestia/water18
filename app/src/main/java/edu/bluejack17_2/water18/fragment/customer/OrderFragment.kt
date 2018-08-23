@@ -12,17 +12,31 @@ import android.view.ViewGroup
 import edu.bluejack17_2.water18.R
 import edu.bluejack17_2.water18.adapter.list.customer.OrderAdapter
 import edu.bluejack17_2.water18.controller.ProductListController
+import edu.bluejack17_2.water18.firebase.listener.OnGetDataListener
 import edu.bluejack17_2.water18.model.Product
+import kotlinx.android.synthetic.main.fragment_order_list.*
+import kotlinx.android.synthetic.main.fragment_order_list.view.*
 
-class OrderFragment : Fragment()
+class OrderFragment : Fragment(), View.OnClickListener
 {
+
     private var columnCount = 1
 
     private var listener: OnListFragmentInteractionListener? = null
 
+    private var gdl:OnGetDataListener?=null
+
+    private fun addListener() = arrayOf(btn_place_order).forEach { it.setOnClickListener(this) }
+
     companion object
     {
         fun newInstance() = OrderFragment()
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?)
+    {
+        super.onActivityCreated(savedInstanceState)
+        addListener()
     }
 
     override fun onCreate(savedInstanceState: Bundle?)
@@ -37,10 +51,9 @@ class OrderFragment : Fragment()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
         val view = inflater.inflate(R.layout.fragment_order_list, container, false)
-
-        if(view is RecyclerView)
+        if(view.list is RecyclerView)
         {
-            with(view) {
+            with(view.list) {
                 layoutManager = when
                 {
                     columnCount <= 1 -> LinearLayoutManager(context)
@@ -48,6 +61,7 @@ class OrderFragment : Fragment()
                 }
                 adapter = OrderAdapter(ProductListController.items, listener)
             }
+            view.list.adapter?.notifyDataSetChanged()
         }
         return view
     }
@@ -55,6 +69,7 @@ class OrderFragment : Fragment()
     override fun onAttach(context: Context)
     {
         super.onAttach(context)
+        ProductListController.read()
         if(context is OnListFragmentInteractionListener)
         {
             listener = context
@@ -70,6 +85,24 @@ class OrderFragment : Fragment()
         super.onDetach()
         listener = null
     }
+
+    override fun onClick(src: View?)
+    {
+        when(src)
+        {
+            btn_place_order->placeOrder()
+            else -> return
+        }
+    }
+
+    private fun placeOrder()
+    {
+        activity?.supportFragmentManager?.beginTransaction()?.apply {
+            replace(R.id.content_frame,CartFragment.newInstance())
+            commit()
+        }
+    }
+
 
     interface OnListFragmentInteractionListener
     {
