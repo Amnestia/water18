@@ -23,14 +23,12 @@ import edu.bluejack17_2.water18.model.Product
 import edu.bluejack17_2.water18.model.TransactionHistory
 import kotlinx.android.synthetic.main.drawer_navigation.*
 import org.jetbrains.anko.intentFor
-import java.util.*
 
 
 class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
                              OrderFragment.OnListFragmentInteractionListener, HistoryFragment.OnListFragmentInteractionListener,
                              CartFragment.OnListFragmentInteractionListener, GoogleApiClient.OnConnectionFailedListener
 {
-
     private var mGoogleApiClient: GoogleApiClient? = null
 
     override fun onConnectionFailed(connectionResult: ConnectionResult) {
@@ -82,6 +80,7 @@ class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationIte
         //}
     }
 
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean
     {
         val fragment:Fragment?=
@@ -93,7 +92,6 @@ class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationIte
             R.id.nav_sign_out -> signOut()
             else -> null
         } ?: return false
-
 
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.content_frame,fragment as Fragment)

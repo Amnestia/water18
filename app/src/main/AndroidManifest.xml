@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="edu.bluejack17_2.water18">
 
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="edu.bluejack17_2.water18">
+    xmlns:tools="http://schemas.android.com/tools"
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -24,10 +26,11 @@
         <activity android:name=".activity.PhoneVerificationActivity" />
         <activity android:name=".activity.SignUpWithPhoneNumberActivity" />
         <activity android:name=".activity.AdminMainActivity" />
-        <activity android:name=".activity.CPanelActivity"></activity>
-        <activity android:name=".activity.CustomerMainActivity"></activity>
+        <activity android:name=".activity.CPanelActivity" />
+        <activity android:name=".activity.CustomerMainActivity" />
 
         <meta-data
+            tools:replace="android:value"
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
@@ -47,6 +50,7 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.ChatActivity"></activity>
     </application>
 
 </manifest>
