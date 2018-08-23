@@ -28,6 +28,7 @@ import org.jetbrains.anko.intentFor
 class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
                              OrderFragment.OnListFragmentInteractionListener, HistoryFragment.OnListFragmentInteractionListener,
                              CartFragment.OnListFragmentInteractionListener, GoogleApiClient.OnConnectionFailedListener
+
 {
     private var mGoogleApiClient: GoogleApiClient? = null
 
