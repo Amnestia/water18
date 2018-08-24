@@ -23,6 +23,12 @@ import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.common.ConnectionResult
 import android.support.annotation.NonNull
 import android.util.Log
+import com.google.android.gms.common.api.ApiException
+import android.R.attr.data
+import android.widget.Toast
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.*
 
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener, GoogleApiClient.OnConnectionFailedListener
@@ -30,6 +36,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, GoogleApiClient
     private val RC_SIGN_IN = 9001
     private val callbackManager = CallbackManager.Factory.create()
     private var mGoogleApiClient: GoogleApiClient? = null
+    private var mAuth = FirebaseAuth.getInstance()
 
     override fun onConnectionFailed(connectionResult: ConnectionResult) {
         Log.d("Umm", "onConnectionFailed: " + connectionResult)
@@ -43,7 +50,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, GoogleApiClient
 
     override fun onStart() {
         super.onStart()
-        LoginManager.getInstance().logOut()
+        //LoginManager.getInstance().logOut()
         //check if there is a Facebook Acount signed in
         val accessToken = AccessToken.getCurrentAccessToken()
         val isLoggedIn = accessToken != null && !accessToken.isExpired
@@ -56,8 +63,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, GoogleApiClient
         //if account is not null means a user has signed in before
         if (account != null) {
             //go to main activity
-            val intent=Intent(applicationContext,CustomerMainActivity::class.java)
-            startActivity(intent)
+
         }
     }
 
@@ -67,8 +73,11 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, GoogleApiClient
         setContentView(R.layout.activity_login)
         addListener()
 
+// ...
+
         //google
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build()
         mGoogleApiClient = GoogleApiClient.Builder(this).enableAutoManage(this, this)
@@ -100,9 +109,19 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, GoogleApiClient
 
         //google
         if (requestCode == RC_SIGN_IN) {
-            //val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            val intent=Intent(applicationContext,CustomerMainActivity::class.java)
-            startActivity(intent)
+
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                val account = task.getResult(ApiException::class.java)
+                firebaseAuthWithGoogle(account)
+            } catch (e: ApiException) {
+                // Google Sign In failed, update UI appropriately
+                //Log.w(FragmentActivity.TAG, "Google sign in failed", e)
+                // ...
+            }
+
+//
         }
     }
 
@@ -143,4 +162,34 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, GoogleApiClient
         val signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient)
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
+
+    fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
+        //Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
+
+        var credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null)
+        mAuth.signInWithCredential(credential).addOnCompleteListener(this, OnCompleteListener <AuthResult> {
+
+            fun onComplete(@NonNull task: Task<AuthResult> ) {
+                if (task.isSuccessful()) {
+                    // Sign in success, update UI with the signed-in user's information
+                    //Log.d(TAG, "signInWithCredential:success");
+                    var user = mAuth.currentUser;
+                    Toast.makeText(this, "Loggin success.",
+                            Toast.LENGTH_LONG).show();
+                    val intent=Intent(applicationContext,CustomerMainActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    // If sign in fails, display a message to the user.
+                    //Log.w(TAG, "signInWithCredential:failure", task.getException());
+                    Toast.makeText(this, "Authentication failed.",
+                            Toast.LENGTH_SHORT).show();
+
+                }
+
+                // ...
+            }
+        })
+    }
+
+
 }

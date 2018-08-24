@@ -1,5 +1,6 @@
 package edu.bluejack17_2.water18.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import edu.bluejack17_2.water18.R
+import edu.bluejack17_2.water18.activity.ChatActivity
+import edu.bluejack17_2.water18.activity.CustomerMainActivity
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(), View.OnClickListener
@@ -21,7 +24,7 @@ class HomeFragment : Fragment(), View.OnClickListener
 
     private fun addListener()
     {
-        var buttons=arrayOf(btnChangePassword,btnEdit,btnSave)
+        var buttons=arrayOf(btnChangePassword,btnEdit,btnSave, btnChat)
         buttons.forEach { it.setOnClickListener(this)  }
     }
 
@@ -70,6 +73,7 @@ class HomeFragment : Fragment(), View.OnClickListener
             btnChangePassword->changePassword()
             btnEdit->edit()
             btnSave->save()
+            btnChat->chat()
             else->return
         }
     }
@@ -93,6 +97,12 @@ class HomeFragment : Fragment(), View.OnClickListener
     fun updateAddress(address: String?)
     {
         
+    }
+
+    fun chat(){
+//        ChatFragment.newInstance()
+        val intent= Intent(context, ChatActivity::class.java)
+        startActivity(intent)
     }
 
 }
