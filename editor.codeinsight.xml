@@ -3,6 +3,7 @@
     <option name="AUTO_POPUP_JAVADOC_INFO" value="true" />
     <option name="ADD_UNAMBIGIOUS_IMPORTS_ON_THE_FLY" value="true" />
     <EXCLUDED_PACKAGE NAME="android.support.v4.app.Fragment" />
+    <EXCLUDED_PACKAGE NAME="android.support.v7.app.ActionBarDrawerToggle" />
     <EXCLUDED_PACKAGE NAME="com.google.android.gms.tasks.OnCompleteListener" />
     <EXCLUDED_PACKAGE NAME="com.google.android.gms.tasks.Task" />
     <EXCLUDED_PACKAGE NAME="edu.bluejack17_2.water18.model.User" />
