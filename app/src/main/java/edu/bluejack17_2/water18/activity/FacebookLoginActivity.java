@@ -145,9 +145,15 @@ public class FacebookLoginActivity extends AppCompatActivity {
                         //User u = data.getValue(User.class);
                     }
                     //if not found, go to edit profile activity
+
+                    //debug
+                    Intent home = new Intent(FacebookLoginActivity.this, CustomerMainActivity.class);
+                    FacebookLoginActivity.this.startActivity(home);
+                    //end of debug
+
 //                    Intent editProfile = new Intent(FacebookLoginActivity.this, EditProfileActivity.class);
 //                    FacebookLoginActivity.this.startActivity(editProfile);
-//                    Toast.makeText(GoogleLoginActivity.this, "There is no user of this id", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FacebookLoginActivity.this, "There is no user of this id", Toast.LENGTH_SHORT).show();
 
                 }
 

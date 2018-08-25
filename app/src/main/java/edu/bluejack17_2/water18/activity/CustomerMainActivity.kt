@@ -13,6 +13,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
+import com.google.firebase.auth.FirebaseAuth
 import edu.bluejack17_2.water18.R
 import edu.bluejack17_2.water18.firebase.controller.FirebaseUserController
 import edu.bluejack17_2.water18.fragment.customer.CartFragment
@@ -38,13 +39,18 @@ class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationIte
 
     override fun onStart() {
         super.onStart()
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build()
+        try {
+            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestEmail()
+                    .build()
 
-        mGoogleApiClient = GoogleApiClient.Builder(this).enableAutoManage(this, this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-                .build()
+            mGoogleApiClient = GoogleApiClient.Builder(this).enableAutoManage(this, this)
+                    .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                    .build()
+        } catch (e: IllegalStateException){
+
+        }
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?)
@@ -105,24 +111,22 @@ class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationIte
 
     fun signOut() : Fragment?
     {
-//        //check if logged in using google account if available, log out from GOOGLE
+        FirebaseAuth.getInstance().signOut()
+
+        //check if logged in using google account if available, log out from GOOGLE
         val googleSigned = GoogleSignIn.getLastSignedInAccount(this)
-//
-//        //check if logged in using facebook account if available, log out from FACEBOOK
+
+        //check if logged in using facebook account if available, log out from FACEBOOK
         val accessToken = AccessToken.getCurrentAccessToken()
         val facebookSigned = accessToken != null && !accessToken.isExpired
-//
+
         //log out from GOOGLE
         if (googleSigned != null) {
             Auth.GoogleSignInApi.signOut(mGoogleApiClient)
         }
-//        //log out from FACEBOOK
-        if(facebookSigned){
+        //log out from FACEBOOK
+        else if(facebookSigned){
             LoginManager.getInstance().logOut()
-        }
-        //Finally if none of the above, sign out from firebase
-        else{
-            FirebaseUserController.signOut()
         }
 
         startActivity(intentFor<LoginActivity>())
