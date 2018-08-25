@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
 import edu.bluejack17_2.water18.R;
+import edu.bluejack17_2.water18.firebase.Firebase;
 import edu.bluejack17_2.water18.model.ChatMessage;
 
 public class ChatActivity extends AppCompatActivity {
@@ -27,7 +28,7 @@ public class ChatActivity extends AppCompatActivity {
         ListView listOfMessages = findViewById(R.id.list_of_messages);
 
         adapter = new FirebaseListAdapter<ChatMessage>(this, ChatMessage.class,
-                R.layout.message, FirebaseDatabase.getInstance().getReference()) {
+                R.layout.message, FirebaseDatabase.getInstance().getReference("chat")) {
             @Override
             protected void populateView(View v, ChatMessage model, int position) {
                 TextView messageText = v.findViewById(R.id.message_text);
@@ -77,10 +78,10 @@ public class ChatActivity extends AppCompatActivity {
                 EditText input = findViewById(R.id.input);
 
                 FirebaseDatabase.getInstance()
-                        .getReference()
+                        .getReference("chat")
                         .push()
                         .setValue(new ChatMessage(input.getText().toString(),
-                                "test", "admin")
+                                FirebaseAuth.getInstance().getCurrentUser().getEmail(), "admin")
                         );
                 input.setText("");
             }

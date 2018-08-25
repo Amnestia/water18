@@ -152,6 +152,7 @@
     <orderEntry type="library" name="Gradle: com.facebook.android:facebook-marketing-4.35.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:animated-vector-drawable-28.0.0-alpha1" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support.constraint:constraint-layout-1.1.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.firebaseui:firebase-ui-auth-0.6.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:design-expandable-28.0.0-alpha1" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:print-28.0.0-beta01" level="project" />
     <orderEntry type="library" name="Gradle: com.facebook.android:facebook-login-4.35.0" level="project" />
@@ -202,7 +203,6 @@
     <orderEntry type="library" name="Gradle: com.android.support:coordinatorlayout-28.0.0-beta01" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.google.code.findbugs:jsr305:2.0.1@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.firebase:firebase-measurement-connector-impl-16.0.1" level="project" />
-    <orderEntry type="library" name="Gradle: android.arch.lifecycle:extensions-1.1.1" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.core:common:1.1.1@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:palette-v7-23.4.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:design-math-28.0.0-alpha1" level="project" />
@@ -230,7 +230,6 @@
     <orderEntry type="library" name="Gradle: com.android.support:support-core-ui-28.0.0-beta01" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:versionedparcelable-28.0.0-beta01" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:design-bottomsheet-28.0.0-alpha1" level="project" />
-    <orderEntry type="library" name="Gradle: com.android.support:customtabs-27.1.1" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:swiperefreshlayout-28.0.0-beta01" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-ads-base-15.0.1" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-media-compat-28.0.0-beta01" level="project" />
@@ -242,7 +241,6 @@
     <orderEntry type="library" name="Gradle: com.google.firebase:firebase-storage-9.6.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:design-floatingactionbutton-28.0.0-alpha1" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:slidingpanelayout-28.0.0-beta01" level="project" />
-    <orderEntry type="library" name="Gradle: android.arch.lifecycle:livedata-1.1.1" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:design-28.0.0-alpha1" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:design-animation-28.0.0-alpha1" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.anko:anko-support-v4:0.10.5@jar" level="project" />
@@ -255,22 +253,22 @@
     <orderEntry type="library" name="Gradle: com.google.firebase:firebase-analytics-16.0.1" level="project" />
     <orderEntry type="library" name="Gradle: com.facebook.android:facebook-android-sdk-4.35.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.firebase:firebase-database-collection-15.0.1" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-places-placereport-15.0.1" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:design-typography-28.0.0-alpha1" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:collections:28.0.0-beta01@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.android.support.test:runner-1.0.2" level="project" />
     <orderEntry type="library" name="Gradle: com.firebaseui:firebase-ui-0.6.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:asynclayoutinflater-28.0.0-beta01" level="project" />
-    <orderEntry type="library" name="Gradle: com.firebaseui:firebase-ui-auth-4.0.0" level="project" />
-    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-auth-16.0.2" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:design-internal-28.0.0-alpha1" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-vector-drawable-28.0.0-alpha1" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-auth-16.0.3" level="project" />
     <orderEntry type="library" name="Gradle: com.parse.bolts:bolts-android:1.4.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.anko:anko-sdk25:0.10.5@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.parse.bolts:bolts-tasks:1.4.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-auth-15.0.1" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:design-circularreveal-28.0.0-alpha1" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:localbroadcastmanager-28.0.0-beta01" level="project" />
-    <orderEntry type="library" name="Gradle: me.zhanghai.android.materialprogressbar:library-1.4.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:customtabs-27.0.2" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-base-15.0.1" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-core-utils-28.0.0-beta01" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.anko:anko-commons:0.10.5@jar" level="project" />
@@ -282,6 +280,7 @@
     <orderEntry type="library" name="Gradle: com.google.firebase:firebase-database-16.0.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: junit:junit:4.12@jar" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core:0.15@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-location-15.0.1" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:design-widget-28.0.0-alpha1" level="project" />
     <orderEntry type="library" name="Gradle: com.google.firebase:firebase-iid-16.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.android.support.test.espresso:espresso-idling-resource-3.0.2" level="project" />

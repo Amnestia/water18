@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="edu.bluejack17_2.water18">
     xmlns:tools="http://schemas.android.com/tools"
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -28,11 +28,13 @@
         <activity android:name=".activity.AdminMainActivity" />
         <activity android:name=".activity.CPanelActivity" />
         <activity android:name=".activity.CustomerMainActivity" />
+        <activity android:name=".activity.FacebookLoginActivity" />
+        <activity android:name=".activity.GoogleLoginActivity" />
 
         <meta-data
-            tools:replace="android:value"
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
+            android:value="@string/facebook_app_id"
+            tools:replace="android:value" />
 
         <activity
             android:name="com.facebook.FacebookActivity"
@@ -50,7 +52,14 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ChatActivity"></activity>
+        <activity android:name=".activity.ChatActivity" />
+
+        <service
+            android:name=".service.TrackerService"
+            android:enabled="true"
+            android:exported="true"></service>
+
+        <activity android:name=".activity.TrackerActivity"></activity>
     </application>
 
 </manifest>
