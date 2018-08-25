@@ -27,7 +27,7 @@ public class ChatActivity extends AppCompatActivity {
         ListView listOfMessages = findViewById(R.id.list_of_messages);
 
         adapter = new FirebaseListAdapter<ChatMessage>(this, ChatMessage.class,
-                R.layout.message, FirebaseDatabase.getInstance().getReference()) {
+                R.layout.message, FirebaseDatabase.getInstance().getReference("chat")) {
             @Override
             protected void populateView(View v, ChatMessage model, int position) {
                 TextView messageText = v.findViewById(R.id.message_text);
@@ -77,10 +77,10 @@ public class ChatActivity extends AppCompatActivity {
                 EditText input = findViewById(R.id.input);
 
                 FirebaseDatabase.getInstance()
-                        .getReference()
+                        .getReference("chat")
                         .push()
                         .setValue(new ChatMessage(input.getText().toString(),
-                                "test", "admin")
+                                FirebaseAuth.getInstance().getCurrentUser().getDisplayName(), "admin")
                         );
                 input.setText("");
             }

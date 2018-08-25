@@ -24,7 +24,7 @@ class HomeFragment : Fragment(), View.OnClickListener
 
     private fun addListener()
     {
-        var buttons=arrayOf(btnChangePassword,btnEdit,btnSave, btnChat)
+        var buttons = arrayOf(btnChangePassword, btnEdit, btnSave, btnChat)
         buttons.forEach { it.setOnClickListener(this)  }
     }
 
@@ -100,7 +100,6 @@ class HomeFragment : Fragment(), View.OnClickListener
     }
 
     fun chat(){
-//        ChatFragment.newInstance()
         val intent= Intent(context, ChatActivity::class.java)
         startActivity(intent)
     }

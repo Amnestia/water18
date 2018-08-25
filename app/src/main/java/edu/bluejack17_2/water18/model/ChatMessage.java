@@ -9,6 +9,10 @@ public class ChatMessage {
     private String receiver;
     private long messageTime;
 
+    public ChatMessage(){
+
+    }
+
     public ChatMessage(String messageText, String sender, String receiver){
         this.messageText = messageText;
         this.sender = sender;

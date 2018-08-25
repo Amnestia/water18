@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -136,6 +135,12 @@ public class GoogleLoginActivity extends AppCompatActivity{
                         //User u = data.getValue(User.class);
                     }
                     //if not found, go to edit profile activity
+
+                    //debug
+                    Intent home = new Intent(GoogleLoginActivity.this, CustomerMainActivity.class);
+                    GoogleLoginActivity.this.startActivity(home);
+                    //end of debug
+
 //                    Intent editProfile = new Intent(GoogleLoginActivity.this, EditProfileActivity.class);
 //                    GoogleLoginActivity.this.startActivity(editProfile);
 //                    Toast.makeText(GoogleLoginActivity.this, "There is no user of this id", Toast.LENGTH_SHORT).show();
