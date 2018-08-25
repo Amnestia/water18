@@ -11,8 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import edu.bluejack17_2.water18.R
 import edu.bluejack17_2.water18.adapter.list.customer.OrderAdapter
-import edu.bluejack17_2.water18.controller.ProductListController
-import edu.bluejack17_2.water18.firebase.listener.OnGetDataListener
+import edu.bluejack17_2.water18.baseclass.OnGetDataListener
+import edu.bluejack17_2.water18.controller.ProductController
 import edu.bluejack17_2.water18.model.Product
 import kotlinx.android.synthetic.main.fragment_order_list.*
 import kotlinx.android.synthetic.main.fragment_order_list.view.*
@@ -24,7 +24,7 @@ class OrderFragment : Fragment(), View.OnClickListener
 
     private var listener: OnListFragmentInteractionListener? = null
 
-    private var gdl:OnGetDataListener?=null
+    private var gdl: OnGetDataListener?=null
 
     private fun addListener() = arrayOf(btn_place_order).forEach { it.setOnClickListener(this) }
 
@@ -59,7 +59,7 @@ class OrderFragment : Fragment(), View.OnClickListener
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = OrderAdapter(ProductListController.items, listener)
+                adapter = OrderAdapter(ProductController.items, listener)
             }
             view.list.adapter?.notifyDataSetChanged()
         }
@@ -69,7 +69,6 @@ class OrderFragment : Fragment(), View.OnClickListener
     override fun onAttach(context: Context)
     {
         super.onAttach(context)
-        ProductListController.read()
         if(context is OnListFragmentInteractionListener)
         {
             listener = context

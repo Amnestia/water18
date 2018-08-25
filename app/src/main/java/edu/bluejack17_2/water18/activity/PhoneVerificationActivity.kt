@@ -1,6 +1,5 @@
 package edu.bluejack17_2.water18.activity
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -39,7 +38,7 @@ class PhoneVerificationActivity : AppCompatActivity(), View.OnClickListener
 
     fun resend()
     {
-        val token = intent.extras.get("token")
+        val token = intent?.extras!!.get("token")
         val phoneNumber=intent.getStringExtra("phoneNumber")
         PhoneNumberAuth.resendCode(phoneNumber, token as PhoneAuthProvider.ForceResendingToken?,this)
     }
@@ -49,14 +48,9 @@ class PhoneVerificationActivity : AppCompatActivity(), View.OnClickListener
         val verificationCode=intent.getStringExtra("verificationCode")
         val code = tf_verification_code.text.toString()
         val credential=PhoneAuthProvider.getCredential(verificationCode,code)
-        if(!PhoneNumberAuth.signIn(credential,this))
+        if(!PhoneNumberAuth.signIn(credential,this,intent.getStringExtra("phoneNumber")))
         {
             resend()
-        }
-        else
-        {
-            val intent= Intent(applicationContext,AdminMainActivity::class.java)
-            startActivity(intent)
         }
     }
 }

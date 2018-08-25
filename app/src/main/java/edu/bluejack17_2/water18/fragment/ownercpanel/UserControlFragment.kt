@@ -11,8 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import edu.bluejack17_2.water18.R
 import edu.bluejack17_2.water18.adapter.list.ownercpanel.UserAdapter
-import edu.bluejack17_2.water18.controller.UserListController
 import edu.bluejack17_2.water18.model.User
+import edu.bluejack17_2.water18.storage.UserStorage
 
 class UserControlFragment : Fragment()
 {
@@ -46,7 +46,7 @@ class UserControlFragment : Fragment()
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = UserAdapter(UserListController.items, listener)
+                adapter = UserAdapter(UserStorage.users, listener)
             }
         }
         return view

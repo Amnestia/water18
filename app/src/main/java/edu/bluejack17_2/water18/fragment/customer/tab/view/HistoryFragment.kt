@@ -11,8 +11,9 @@ import android.view.View
 import android.view.ViewGroup
 import edu.bluejack17_2.water18.R
 import edu.bluejack17_2.water18.adapter.list.customer.TransactionHistoryAdapter
-import edu.bluejack17_2.water18.controller.TransactionHistoryListController
-import edu.bluejack17_2.water18.model.TransactionHistory
+import edu.bluejack17_2.water18.model.Transaction
+import edu.bluejack17_2.water18.storage.HistoryStorage
+import kotlinx.android.synthetic.main.fragment_history_list.view.*
 
 class HistoryFragment : Fragment()
 {
@@ -38,15 +39,15 @@ class HistoryFragment : Fragment()
     {
         val view = inflater.inflate(R.layout.fragment_history_list, container, false)
 
-        if(view is RecyclerView)
+        if(view.list is RecyclerView)
         {
-            with(view) {
+            with(view.list) {
                 layoutManager = when
                 {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = TransactionHistoryAdapter(TransactionHistoryListController.items, listener)
+                adapter = TransactionHistoryAdapter(HistoryStorage.histories, listener)
             }
         }
         return view
@@ -73,6 +74,6 @@ class HistoryFragment : Fragment()
 
     interface OnListFragmentInteractionListener
     {
-        fun onListFragmentInteraction(history: TransactionHistory?)
+        fun onListFragmentInteraction(history: Transaction?)
     }
 }

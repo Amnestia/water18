@@ -1,6 +1,7 @@
 package edu.bluejack17_2.water18.adapter.list.customer
 
 
+import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import edu.bluejack17_2.water18.fragment.customer.OrderFragment
 import edu.bluejack17_2.water18.model.Product
 import kotlinx.android.synthetic.main.fragment_order_list.view.*
 import kotlinx.android.synthetic.main.item_order.view.*
+import org.jetbrains.anko.toast
 
 class OrderAdapter(private val mValues: List<Product>, private val mListener: OrderFragment.OnListFragmentInteractionListener?) : RecyclerView.Adapter<OrderAdapter.ViewHolder>()
 {
@@ -20,6 +22,7 @@ class OrderAdapter(private val mValues: List<Product>, private val mListener: Or
     private val mOnClickListener: View.OnClickListener
 
     private lateinit var txtTotalPrice:TextView
+    private lateinit var ctx:Context
     init
     {
         mOnClickListener = View.OnClickListener { v ->
@@ -33,6 +36,7 @@ class OrderAdapter(private val mValues: List<Product>, private val mListener: Or
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_order, parent, false)
         val viewList = LayoutInflater.from(parent.context).inflate(R.layout.fragment_order_list, parent, false)
         txtTotalPrice=viewList.txt_total_price
+        ctx=parent.context
         return ViewHolder(view)
     }
 
@@ -42,7 +46,7 @@ class OrderAdapter(private val mValues: List<Product>, private val mListener: Or
         holder.itemName.text = item.name
         holder.itemPrice.text = item.price.toString()
         holder.itemQuantity.setText("0",TextView.BufferType.EDITABLE)
-
+        txtTotalPrice.setText(CartController.getTotalPrice().toString(),TextView.BufferType.NORMAL)
         holder.buttons[0].setOnClickListener { updateItem(item,holder) }
         holder.buttons[1].setOnClickListener { deleteItem(item,holder) }
 
@@ -62,16 +66,25 @@ class OrderAdapter(private val mValues: List<Product>, private val mListener: Or
         val buttons=arrayOf(mView.btn_add,mView.btn_remove)
     }
 
+    private fun refreshView(txt:TextView)
+    {
+        txt.visibility=TextView.INVISIBLE
+        txt.visibility=TextView.VISIBLE
+    }
+
     private fun updateTotalPrice()
     {
-        txtTotalPrice.text=CartController.getTotalPrice().toString()
+        txtTotalPrice.setText(CartController.getTotalPrice().toString(),TextView.BufferType.NORMAL)
+        refreshView(txtTotalPrice)
     }
 
     private fun updateItem(item: Product,holder: ViewHolder)
     {
-        val quantity=holder.itemQuantity.text.toString().toLongOrNull()
+        var quantity=holder.itemQuantity.text.toString().toLongOrNull()
+        quantity = quantity?.plus(CartController.getCurrentQuantity(item))
         if(quantity!!>item.stock!!)
         {
+            ctx.toast("Sorry, we do not have that many on our stock.")
             return
         }
         CartController.add(item, quantity)

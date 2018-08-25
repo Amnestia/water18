@@ -4,18 +4,26 @@ import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.MenuItem
 import edu.bluejack17_2.water18.R
 import edu.bluejack17_2.water18.firebase.controller.FirebaseUserController
 import edu.bluejack17_2.water18.fragment.HomeFragment
+import edu.bluejack17_2.water18.fragment.admin.CustomerTransactionFragment
 import edu.bluejack17_2.water18.fragment.admin.StockFragment
+import edu.bluejack17_2.water18.fragment.admin.TransactionAdminFragment
 import edu.bluejack17_2.water18.fragment.customer.OrderFragment
 import edu.bluejack17_2.water18.model.Product
-import kotlinx.android.synthetic.main.drawer_navigation.*
+import edu.bluejack17_2.water18.model.Transaction
+import edu.bluejack17_2.water18.storage.TransactionStorage
+import edu.bluejack17_2.water18.storage.UserStorage
+import kotlinx.android.synthetic.main.drawer_navigation_admin.*
+import kotlinx.android.synthetic.main.drawer_navigation_header.view.*
 import org.jetbrains.anko.intentFor
 
 class AdminMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
-                          StockFragment.OnListFragmentInteractionListener, OrderFragment.OnListFragmentInteractionListener
+                          StockFragment.OnListFragmentInteractionListener, OrderFragment.OnListFragmentInteractionListener,
+                          TransactionAdminFragment.OnListFragmentInteractionListener, CustomerTransactionFragment.OnListFragmentInteractionListener
 {
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -36,11 +44,10 @@ class AdminMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
     private fun initDrawer()
     {
+        val headerView=navigation_view.getHeaderView(0)
+        headerView.txt_address.text = UserStorage.user?.address.toString()
+        headerView.txt_phone.text = UserStorage.user?.phoneNumber.toString()
         navigation_view.setNavigationItemSelectedListener(this)
-        /*val toggle = ActionBarDrawerToggle(this, drawer_navigation_layout,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawer_navigation_layout.addDrawerListener(toggle)
-        toggle.syncState()*/
     }
 
     override fun onBackPressed()
@@ -62,23 +69,28 @@ class AdminMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         {
             R.id.nav_home -> HomeFragment.newInstance()
             R.id.nav_stock -> StockFragment.newInstance()
-            R.id.nav_order -> OrderFragment.newInstance()
+            R.id.nav_order -> CustomerTransactionFragment.newInstance()
             R.id.nav_sign_out -> signOut()
             else -> null
         } ?: return false
-
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.content_frame,fragment as Fragment)
-            commit()
-        }
+        moveFragment(fragment!!)
         //drawer_navigation_layout.closeDrawers()
 
         return true
     }
 
+    fun moveFragment(fragment: Fragment)
+    {
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.content_frame,fragment)
+            commit()
+        }
+    }
+
     fun signOut() : Fragment?
     {
         FirebaseUserController.signOut()
+
         startActivity(intentFor<LoginActivity>())
         return null
     }
@@ -86,5 +98,11 @@ class AdminMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     override fun onListFragmentInteraction(item: Product?)
     {
 
+    }
+
+    override fun onListFragmentInteraction(transaction: Transaction)
+    {
+        TransactionStorage.transaction=transaction
+        moveFragment(TransactionAdminFragment.newInstance())
     }
 }

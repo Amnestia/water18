@@ -9,6 +9,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import edu.bluejack17_2.water18.R
+import edu.bluejack17_2.water18.firebase.controller.FirebaseUserController
+import edu.bluejack17_2.water18.storage.UserStorage
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(), View.OnClickListener
@@ -51,11 +53,19 @@ class HomeFragment : Fragment(), View.OnClickListener
         }
     }
 
+    fun initView()
+    {
+        txt_user_address.text=UserStorage.user?.address
+        txt_user_phone_number.text=UserStorage.user?.phoneNumber
+        tf_user_address.setText(txt_user_address.text,TextView.BufferType.EDITABLE)
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?)
     {
         super.onActivityCreated(savedInstanceState)
         addListener()
         showMode()
+        initView()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
@@ -92,7 +102,8 @@ class HomeFragment : Fragment(), View.OnClickListener
 
     fun updateAddress(address: String?)
     {
-        
+        UserStorage.user?.address=address
+        FirebaseUserController.updateUser(UserStorage.user!!)
     }
 
 }

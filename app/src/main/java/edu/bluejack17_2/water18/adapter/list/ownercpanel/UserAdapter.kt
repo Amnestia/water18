@@ -32,7 +32,7 @@ class UserAdapter(private val mValues: List<User>, private val mListener: UserCo
     override fun onBindViewHolder(holder: ViewHolder, position: Int)
     {
         val user = mValues[position]
-        holder.userName.text = user.name
+        holder.userPhone.text = user.phoneNumber
         holder.userRole.text = user.role.toString()
 
         with(holder.mView) {
@@ -45,7 +45,7 @@ class UserAdapter(private val mValues: List<User>, private val mListener: UserCo
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView)
     {
-        val userName : TextView = mView.txt_user_name
+        val userPhone : TextView = mView.txt_user_name
         val userRole : TextView = mView.txt_user_role
     }
 }

@@ -1,5 +1,6 @@
 package edu.bluejack17_2.water18.adapter.list
 
+import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -7,14 +8,17 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
 import edu.bluejack17_2.water18.R
-import edu.bluejack17_2.water18.controller.ProductListController
+import edu.bluejack17_2.water18.controller.ProductController
 import edu.bluejack17_2.water18.fragment.admin.StockFragment
 import edu.bluejack17_2.water18.model.Product
+import edu.bluejack17_2.water18.notification.Notifier
 import kotlinx.android.synthetic.main.item_stock.view.*
 
 class ProductStockAdapter(private val mValues: List<Product>, private val mListener: StockFragment.OnListFragmentInteractionListener?) : RecyclerView.Adapter<ProductStockAdapter.ViewHolder>()
 {
     private val mOnClickListener: View.OnClickListener
+
+    private lateinit var ctx:Context
 
     init
     {
@@ -27,6 +31,7 @@ class ProductStockAdapter(private val mValues: List<Product>, private val mListe
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
     {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_stock, parent, false)
+        ctx=parent.context
         return ViewHolder(view)
     }
 
@@ -56,14 +61,26 @@ class ProductStockAdapter(private val mValues: List<Product>, private val mListe
 
     fun deleteItem(item : Product)
     {
-        ProductListController.delete(item)
+        ProductController.delete(item)
+        Notifier.notifyAllCustomer(ctx,"Out of stock",item.name as String)
     }
 
     fun updateItem(item : Product, holder: ViewHolder)
     {
+        val price=holder.itemPrice.text.toString().toLongOrNull()
+        val stock=holder.itemQuantity.text.toString().toLongOrNull()
+        var tag=""
+        if(price!=item.price)
+            tag="Price update"
+        if(item.stock!=stock)
+            tag="Stock update"
         item.name=holder.itemName.text.toString()
-        item.price=holder.itemPrice.text.toString().toLongOrNull()
-        item.stock=holder.itemQuantity.text.toString().toLongOrNull()
-        ProductListController.update(item)
+        item.price=price
+        item.stock=stock
+        if(item.stock!!<1)
+            tag="Out of stock"
+        ProductController.update(item)
+        if(tag!="")
+        Notifier.notifyAllCustomer(ctx,tag,item.name as String)
     }
 }

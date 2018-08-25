@@ -9,7 +9,7 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list"
-        android:name="edu.bluejack17_2.water18.fragment.tab.view.OrderFragment"
+        android:name="edu.bluejack17_2.water18.fragment.customer.OrderFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="100dp"

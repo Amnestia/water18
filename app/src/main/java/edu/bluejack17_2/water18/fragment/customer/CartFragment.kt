@@ -15,7 +15,6 @@ import edu.bluejack17_2.water18.adapter.list.customer.CartAdapter
 import edu.bluejack17_2.water18.controller.CartController
 import edu.bluejack17_2.water18.model.Product
 import kotlinx.android.synthetic.main.fragment_cart.*
-import kotlinx.android.synthetic.main.fragment_order_list.*
 import kotlinx.android.synthetic.main.fragment_order_list.view.*
 
 class CartFragment : Fragment(), View.OnClickListener
@@ -89,15 +88,16 @@ class CartFragment : Fragment(), View.OnClickListener
     {
         when(src)
         {
-            btn_place_order->placeOrder()
+            btn_checkout->checkout()
             else -> return
         }
     }
 
-    private fun placeOrder()
+    private fun checkout()
     {
+        CartController.checkout()
         activity?.supportFragmentManager?.beginTransaction()?.apply {
-            replace(R.id.content_frame,CartFragment.newInstance())
+            replace(R.id.content_frame,TransactionFragment.newInstance())
             commit()
         }
     }

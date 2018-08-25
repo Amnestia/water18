@@ -14,6 +14,10 @@
             android:icon="@drawable/ic_order"
             android:title="@string/order" />
         <item
+            android:id="@+id/nav_current_order"
+            android:icon="@drawable/ic_order"
+            android:title="@string/current_order" />
+        <item
             android:id="@+id/nav_sign_out"
             android:icon="@drawable/ic_exit"
             android:title="@string/sign_out" />

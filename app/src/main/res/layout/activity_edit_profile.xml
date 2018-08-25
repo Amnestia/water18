@@ -91,7 +91,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/pf_layout_conpass" />
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/tf_layout_name"
+                android:id="@+id/tf_layout_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="137dp"
@@ -103,25 +103,25 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <EditText
-                    android:id="@+id/tf_name"
+                    android:id="@+id/tf_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="@string/name"
-                    android:inputType="textPersonName" />
+                    android:hint="@string/phone_number"
+                    android:inputType="phone" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/tf_layout_address"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="137dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tf_layout_name">
+                app:layout_constraintTop_toBottomOf="@+id/tf_layout_phone">
 
                 <EditText
                     android:id="@+id/tf_address"

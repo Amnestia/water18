@@ -1,44 +1,43 @@
 package edu.bluejack17_2.water18.storage
 
-import android.util.Log
+import edu.bluejack17_2.water18.model.PairX
 import edu.bluejack17_2.water18.model.Product
 import java.util.*
 
 object Cart
 {
-    var items: MutableList<Product> = Vector()
-    var itemMap: MutableMap<Product, Long> = HashMap()
+    var items: MutableList<PairX<Product,Long>> = Vector()
+
+    fun getIndex(item: Product):Int
+    {
+        for(i in items.indices)
+            if(item.id.equals(items[i].first.id))
+                return i
+        return -1
+    }
 
     fun addToCart(item: Product,quantity: Long)
     {
-        itemMap[item]=quantity
-        if(itemMap[item]!!<1)
-            itemMap.remove(item)
-    }
-
-    fun add(item: Product,quantity: Long)
-    {
-        item.stock=quantity
-        items.add(item)
-    }
-
-    fun addToList()
-    {
-        items.clear()
-        for(item in itemMap)
-            add(item.key,item.value)
+        val idx= getIndex(item)
+        if(idx>-1)
+            items[idx].second=quantity
+        else
+            items.add(PairX(item,quantity))
     }
 
     fun deleteFromCart(item: Product)
     {
-        for(it in itemMap)
-        {
-            if(it.key.id==item.id)
-            {
-                itemMap.remove(it.key)
-                return
-            }
-        }
+        val idx= getIndex(item)
+        if(idx>-1)
+        items.removeAt(idx)
+    }
+
+    fun getQuantity(item: Product) : Long
+    {
+        val idx= getIndex(item)
+        if(idx>-1)
+        return items[idx].second
+        return 0
     }
 
     fun getRes(price: Long, quantity: Long) : Long
@@ -49,26 +48,19 @@ object Cart
     fun calculateTotalPrice():Long
     {
         var price:Long=0
-        for(item in itemMap)
-            price+=getRes(item.key.price as Long,item.value)
-        Log.w("total",price.toString())
+        for(item in items)
+            price+=getRes(item.first.price as Long,item.second)
         return price
     }
 
     fun clear()
     {
-        itemMap.clear()
+        items.clear()
     }
 
-    fun getList() : List<Product>
+    fun getList() : List<PairX<Product,Long>>
     {
         return items
     }
-
-    fun checkInside()
-    {
-        for(item in itemMap)
-            Log.w("items",item.key.name+" "+item.value)
-    }
-
 }
+

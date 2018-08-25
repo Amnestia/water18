@@ -11,7 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import edu.bluejack17_2.water18.R
 import edu.bluejack17_2.water18.adapter.list.ProductStockAdapter
-import edu.bluejack17_2.water18.controller.ProductListController
+import edu.bluejack17_2.water18.controller.ProductController
 import edu.bluejack17_2.water18.fragment.AddItemFragment
 import edu.bluejack17_2.water18.model.Product
 import kotlinx.android.synthetic.main.fragment_stock_list.*
@@ -56,7 +56,7 @@ class StockFragment : Fragment(), View.OnClickListener
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = ProductStockAdapter(ProductListController.items, listener)
+                adapter = ProductStockAdapter(ProductController.items, listener)
             }
             view.list.adapter?.notifyDataSetChanged()
         }

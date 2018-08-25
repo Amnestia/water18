@@ -8,17 +8,18 @@ import android.widget.TextView
 import edu.bluejack17_2.water18.R
 import edu.bluejack17_2.water18.controller.CartController
 import edu.bluejack17_2.water18.fragment.customer.CartFragment
+import edu.bluejack17_2.water18.model.PairX
 import edu.bluejack17_2.water18.model.Product
 import kotlinx.android.synthetic.main.fragment_cart.view.*
 import kotlinx.android.synthetic.main.item_cart.view.*
 
-class CartAdapter(private val mValues: List<Product>, private val mListener: CartFragment.OnListFragmentInteractionListener?) : RecyclerView.Adapter<CartAdapter.ViewHolder>()
+class CartAdapter(private val mValues: List<PairX<Product, Long>>, private val mListener: CartFragment.OnListFragmentInteractionListener?) : RecyclerView.Adapter<CartAdapter.ViewHolder>()
 {
 
     private val mOnClickListener: View.OnClickListener
 
     private lateinit var txtTotalPrice: TextView
-
+    private lateinit var list : RecyclerView
     init
     {
         mOnClickListener = View.OnClickListener { v ->
@@ -38,11 +39,11 @@ class CartAdapter(private val mValues: List<Product>, private val mListener: Car
     override fun onBindViewHolder(holder: ViewHolder, position: Int)
     {
         val item = mValues[position]
-        holder.itemName.text = item.name
-        holder.itemPrice.text = item.price.toString()
-        holder.itemQuantity.text=item.stock.toString()
+        holder.itemName.text = item.first.name
+        holder.itemPrice.text = item.first.price.toString()
+        holder.itemQuantity.text=item.second.toString()
 
-        holder.btnRemove.setOnClickListener { deleteItem(item,holder) }
+        holder.btnRemove.setOnClickListener { deleteItem(item.first,holder) }
 
         with(holder.mView) {
             tag = item
@@ -62,7 +63,7 @@ class CartAdapter(private val mValues: List<Product>, private val mListener: Car
 
     private fun updateTotalPrice()
     {
-        txtTotalPrice.text=CartController.getTotalPrice().toString()
+        txtTotalPrice.setText(CartController.getTotalPrice().toString(),TextView.BufferType.NORMAL)
     }
 
     private fun deleteItem(item: Product, holder: ViewHolder)

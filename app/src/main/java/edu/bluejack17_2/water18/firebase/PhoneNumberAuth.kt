@@ -8,6 +8,7 @@ import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
+import edu.bluejack17_2.water18.activity.EditProfileActivity
 import edu.bluejack17_2.water18.activity.PhoneVerificationActivity
 import edu.bluejack17_2.water18.firebase.controller.FirebaseUserController
 import java.util.concurrent.TimeUnit
@@ -20,7 +21,7 @@ object PhoneNumberAuth
         {
             override fun onVerificationCompleted(credential: PhoneAuthCredential?)
             {
-                signIn(credential,activity)
+                signIn(credential,activity,phoneNumber)
             }
 
             override fun onVerificationFailed(e: FirebaseException?)
@@ -43,15 +44,15 @@ object PhoneNumberAuth
 
     fun verifyPhoneNumber(phoneNumber: String,activity: Activity)
     {
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(phoneNumber,300, TimeUnit.SECONDS,activity,callbacks(phoneNumber,activity))
+        PhoneAuthProvider.getInstance().verifyPhoneNumber(phoneNumber,120, TimeUnit.SECONDS,activity,callbacks(phoneNumber,activity))
     }
 
     fun resendCode(phoneNumber: String, token: PhoneAuthProvider.ForceResendingToken?,activity: Activity)
     {
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(phoneNumber,300, TimeUnit.SECONDS,activity,callbacks(phoneNumber,activity),token)
+        PhoneAuthProvider.getInstance().verifyPhoneNumber(phoneNumber,120, TimeUnit.SECONDS,activity,callbacks(phoneNumber,activity),token)
     }
 
-    fun signIn(credential: PhoneAuthCredential?, activity: Activity): Boolean
+    fun signIn(credential: PhoneAuthCredential?, activity: Activity,phoneNumber: String): Boolean
     {
         var ret=false
         val auth=FirebaseAuth.getInstance()
@@ -62,6 +63,9 @@ object PhoneNumberAuth
                 {
                     FirebaseUserController.setUser(task.result.user)
                     ret=true
+                    val intent= Intent(activity.applicationContext, EditProfileActivity::class.java)
+                    intent.putExtra("phone",phoneNumber)
+                    activity.startActivity(intent)
                 }
                 else
                 {

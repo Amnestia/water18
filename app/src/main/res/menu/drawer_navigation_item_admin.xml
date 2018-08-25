@@ -12,7 +12,7 @@
         <item
             android:id="@+id/nav_order"
             android:icon="@drawable/ic_order"
-            android:title="@string/order" />
+            android:title="@string/customer_order" />
         <item
             android:id="@+id/nav_sign_out"
             android:icon="@drawable/ic_exit"

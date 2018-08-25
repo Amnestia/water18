@@ -13,11 +13,12 @@
 
         <TextView
             android:id="@+id/txt_item_name"
-            android:layout_width="91dp"
-            android:layout_height="40dp"
+            android:layout_width="142dp"
+            android:layout_height="46dp"
             android:layout_marginTop="6dp"
             android:layout_weight="1"
             android:text="TextView"
+            android:textColor="@color/colorBlack"
             android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -29,6 +30,7 @@
             android:layout_marginTop="5dp"
             android:text="TextView"
             android:textSize="20dp"
+            android:textColor="@color/colorBlack"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_item_name" />
 
@@ -37,10 +39,11 @@
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_marginEnd="7dp"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="1dp"
             android:layout_marginTop="7dp"
             android:text="@string/quantity"
-            app:layout_constraintEnd_toStartOf="@+id/btn_delete"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintEnd_toStartOf="@+id/btn_remove"
             app:layout_constraintStart_toEndOf="@+id/txt_item_name"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,7 +61,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txt_quantity" />
 
         <ImageButton
-            android:id="@+id/btn_remove"
+            android:id="@+id/btn_add"
             android:layout_width="38dp"
             android:layout_height="36dp"
             android:layout_marginBottom="1dp"
@@ -66,16 +69,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tf_quantity"
-            app:layout_constraintTop_toBottomOf="@+id/btn_save"
-            app:srcCompat="@drawable/ic_remove_cart" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_remove"
+            app:srcCompat="@drawable/ic_add_cart" />
 
         <ImageButton
-            android:id="@+id/btn_add"
+            android:id="@+id/btn_remove"
             android:layout_width="38dp"
             android:layout_height="36dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_add_cart" />
+            app:srcCompat="@drawable/ic_remove_cart" />
 
     </android.support.constraint.ConstraintLayout>
 
