@@ -74,7 +74,14 @@
 
         <activity
             android:name=".activity.DisplayTrackerActivity"
-            android:label="@string/title_activity_display_tracker"></activity>
+            android:label="@string/title_activity_display_tracker" />
+        <activity android:name=".activity.TrackerActivity" />
+
+        <service
+            android:name=".service.TrackerService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
     </application>
 
 </manifest>
