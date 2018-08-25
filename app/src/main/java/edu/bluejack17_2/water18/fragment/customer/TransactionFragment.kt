@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import edu.bluejack17_2.water18.R
 import edu.bluejack17_2.water18.activity.ChatActivity
+import edu.bluejack17_2.water18.activity.TrackerActivity
 import edu.bluejack17_2.water18.controller.TransactionController
 import edu.bluejack17_2.water18.fragment.customer.tab.view.HomeHistoryParentFragment
 import edu.bluejack17_2.water18.storage.TransactionStorage
@@ -30,7 +31,7 @@ class TransactionFragment : Fragment(), View.OnClickListener
 
     fun addListener()
     {
-        arrayOf(btn_cancel,btn_chat).forEach { it.setOnClickListener(this) }
+        arrayOf(btn_cancel,btn_chat,btn_track).forEach { it.setOnClickListener(this) }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?)
@@ -50,6 +51,7 @@ class TransactionFragment : Fragment(), View.OnClickListener
         {
             btn_cancel -> cancel()
             btn_chat -> chat()
+            btn_track -> track()
             else -> return
         }
     }
@@ -64,6 +66,11 @@ class TransactionFragment : Fragment(), View.OnClickListener
     fun chat()
     {
         startActivity(intentFor<ChatActivity>())
+    }
+
+    fun track()
+    {
+        startActivity(intentFor<TrackerActivity>())
     }
 
     fun moveFragment(fragment: Fragment)

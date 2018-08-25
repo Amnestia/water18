@@ -45,6 +45,7 @@
     <string name="chat">Chat</string>
     <string name="mark_as_read">Mark as Read</string>
     <string name="finish_order">Finish Order</string>
+    <string name="track">Track</string>
 
     <string name="logo_desc">app logo</string>
     <string name="facebook_app_id">232840567417687</string>
