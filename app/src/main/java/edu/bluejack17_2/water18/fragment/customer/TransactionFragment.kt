@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import edu.bluejack17_2.water18.R
 import edu.bluejack17_2.water18.activity.ChatActivity
-import edu.bluejack17_2.water18.activity.TrackerActivity
+import edu.bluejack17_2.water18.activity.DisplayTrackerActivity
 import edu.bluejack17_2.water18.controller.TransactionController
 import edu.bluejack17_2.water18.fragment.customer.tab.view.HomeHistoryParentFragment
 import edu.bluejack17_2.water18.storage.TransactionStorage
@@ -70,7 +70,7 @@ class TransactionFragment : Fragment(), View.OnClickListener
 
     fun track()
     {
-        startActivity(intentFor<TrackerActivity>())
+        startActivity(intentFor<DisplayTrackerActivity>())
     }
 
     fun moveFragment(fragment: Fragment)
