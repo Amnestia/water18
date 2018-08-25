@@ -32,7 +32,7 @@ class UserAdapter(private val mValues: List<User>, private val mListener: UserCo
     override fun onBindViewHolder(holder: ViewHolder, position: Int)
     {
         val user = mValues[position]
-        holder.userName.text = user.name
+//        holder.userName.text = user.name
         holder.userRole.text = user.role.toString()
 
         with(holder.mView) {

@@ -28,6 +28,8 @@
         <activity android:name=".activity.AdminMainActivity" />
         <activity android:name=".activity.CPanelActivity" />
         <activity android:name=".activity.CustomerMainActivity" />
+        <activity android:name=".activity.FacebookLoginActivity" />
+        <activity android:name=".activity.GoogleLoginActivity" />
 
         <meta-data
             tools:replace="android:value"
@@ -50,7 +52,9 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ChatActivity"></activity>
+        <activity android:name=".activity.ChatActivity">
+
+        </activity>
     </application>
 
 </manifest>
