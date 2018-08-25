@@ -22,12 +22,7 @@ public class TrackerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-<<<<<<< HEAD
         setContentView(R.layout.activity_tracker);
-=======
-        setContentView(R.layout.activity_tracker2);
->>>>>>> origin/master
-
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
             Toast.makeText(this, "Please Enable Location Service", Toast.LENGTH_SHORT).show();
