@@ -12,6 +12,7 @@ import android.widget.TextView
 import edu.bluejack17_2.water18.R
 import edu.bluejack17_2.water18.activity.ChatActivity
 import edu.bluejack17_2.water18.activity.CustomerMainActivity
+import edu.bluejack17_2.water18.activity.TrackerActivity
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(), View.OnClickListener
@@ -24,7 +25,7 @@ class HomeFragment : Fragment(), View.OnClickListener
 
     private fun addListener()
     {
-        var buttons = arrayOf(btnChangePassword, btnEdit, btnSave, btnChat)
+        var buttons = arrayOf(btnChangePassword, btnEdit, btnSave, btnChat, btnTrack)
         buttons.forEach { it.setOnClickListener(this)  }
     }
 
@@ -74,6 +75,7 @@ class HomeFragment : Fragment(), View.OnClickListener
             btnEdit->edit()
             btnSave->save()
             btnChat->chat()
+            btnTrack->track()
             else->return
         }
     }
@@ -99,8 +101,15 @@ class HomeFragment : Fragment(), View.OnClickListener
         
     }
 
-    fun chat(){
+    fun chat()
+    {
         val intent= Intent(context, ChatActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun track()
+    {
+        val intent= Intent(context, TrackerActivity::class.java)
         startActivity(intent)
     }
 

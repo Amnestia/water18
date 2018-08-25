@@ -66,6 +66,7 @@ public class TrackerService extends Service {
     };
 
     private void requestLocationUpdates() {
+        // Functionality coming next step
         LocationRequest request = new LocationRequest();
         request.setInterval(10000);
         request.setFastestInterval(5000);
