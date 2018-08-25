@@ -160,42 +160,55 @@
         android:id="@+id/btn_mark_as_read"
         android:layout_width="357dp"
         android:layout_height="41dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:background="@color/blueBackground"
         android:text="@string/mark_as_read"
         app:layout_constraintBottom_toTopOf="@+id/btn_chat"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_chat"
         android:layout_width="357dp"
         android:layout_height="41dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="12dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:background="@color/blueBackground"
         android:text="@string/chat"
         app:layout_constraintBottom_toTopOf="@+id/btn_finish_order"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_finish_order"
         android:layout_width="357dp"
         android:layout_height="41dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:background="@color/blueBackground"
         android:text="@string/finish_order"
+        app:layout_constraintBottom_toTopOf="@+id/btn_start_tracking"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_start_tracking"
+        android:layout_width="357dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:background="@color/blueBackground"
+        android:text="@string/start_tracking"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout

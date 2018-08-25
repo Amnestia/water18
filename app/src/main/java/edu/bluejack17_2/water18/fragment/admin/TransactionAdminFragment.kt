@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import edu.bluejack17_2.water18.R
 import edu.bluejack17_2.water18.activity.ChatActivity
+import edu.bluejack17_2.water18.activity.TrackerActivity
 import edu.bluejack17_2.water18.adapter.list.admin.TransactionProductAdapter
 import edu.bluejack17_2.water18.controller.TransactionController
 import edu.bluejack17_2.water18.fragment.HomeFragment
@@ -27,7 +28,7 @@ class TransactionAdminFragment : Fragment(), View.OnClickListener
 
     private var listener: OnListFragmentInteractionListener? = null
 
-    private fun addListener() = arrayOf(btn_mark_as_read,btn_chat,btn_finish_order).forEach { it.setOnClickListener(this) }
+    private fun addListener() = arrayOf(btn_mark_as_read,btn_chat,btn_finish_order,btn_start_tracking).forEach { it.setOnClickListener(this) }
 
     companion object
     {
@@ -111,6 +112,7 @@ class TransactionAdminFragment : Fragment(), View.OnClickListener
             btn_chat->chat()
             btn_mark_as_read->read()
             btn_finish_order->finish()
+            btn_start_tracking->track()
             else -> return
         }
     }
@@ -130,6 +132,11 @@ class TransactionAdminFragment : Fragment(), View.OnClickListener
     {
         TransactionController.finish(TransactionStorage.transaction)
         moveFragment(HomeFragment.newInstance())
+    }
+
+    private fun track()
+    {
+        startActivity(intentFor<TrackerActivity>())
     }
 
     private fun moveFragment(fragment: Fragment)
