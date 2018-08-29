@@ -15,11 +15,15 @@ import edu.bluejack17_2.water18.fragment.admin.TransactionAdminFragment
 import edu.bluejack17_2.water18.fragment.customer.OrderFragment
 import edu.bluejack17_2.water18.model.Product
 import edu.bluejack17_2.water18.model.Transaction
+import edu.bluejack17_2.water18.service.TrackerService
 import edu.bluejack17_2.water18.storage.TransactionStorage
 import edu.bluejack17_2.water18.storage.UserStorage
 import kotlinx.android.synthetic.main.drawer_navigation_admin.*
 import kotlinx.android.synthetic.main.drawer_navigation_header.view.*
 import org.jetbrains.anko.intentFor
+import android.content.Intent
+
+
 
 class AdminMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
                           StockFragment.OnListFragmentInteractionListener, OrderFragment.OnListFragmentInteractionListener,
@@ -89,8 +93,8 @@ class AdminMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
     fun signOut() : Fragment?
     {
+        stopService(Intent(this@AdminMainActivity, TrackerService::class.java))
         FirebaseUserController.signOut()
-
         startActivity(intentFor<LoginActivity>())
         return null
     }

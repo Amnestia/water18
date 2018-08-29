@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -23,12 +24,20 @@ public class TrackerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tracker);
+
+        // Check GPS is enabled
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
             Toast.makeText(this, "Please Enable Location Service", Toast.LENGTH_SHORT).show();
+            //
+            Intent setting = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            startActivity(setting);
+            //
             finish();
         }
 
+        // Check location permission is granted - if it is, start
+        // the service, otherwise request the permission
         int permission = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
         if(permission == PackageManager.PERMISSION_GRANTED){
             startTrackerService();

@@ -11,10 +11,13 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.IBinder;
+import android.provider.Settings;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -70,13 +73,25 @@ public class TrackerService extends Service {
     protected BroadcastReceiver stopReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            // Stop the service when the notification is tapped
             unregisterReceiver(stopReceiver);
             stopSelf();
         }
     };
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+            Toast.makeText(this, "Don't forget to disable your GPS", Toast.LENGTH_LONG).show();
+            Intent setting = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            startActivity(setting);
+            stopSelf();
+        }
+    }
+
     private void requestLocationUpdates() {
-        // Functionality coming next step
         LocationRequest request = new LocationRequest();
         request.setInterval(10000);
         request.setFastestInterval(5000);
