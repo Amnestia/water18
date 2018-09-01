@@ -5,19 +5,23 @@ import android.util.Log
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import edu.bluejack17_2.water18.baseclass.OnGetDataListener
 import edu.bluejack17_2.water18.firebase.controller.FirebaseNotificationController
+import edu.bluejack17_2.water18.firebase.listener.NotificationGetDataListener
 import edu.bluejack17_2.water18.model.Notification
 import edu.bluejack17_2.water18.notification.Notifier
-import edu.bluejack17_2.water18.service.NotificationService
 
 object NotificationController
 {
-    fun execute(notif: Notification)
+    fun execute(notif: Notification,ctx:Context)
     {
         if(notif.timestamp.deleted_at.isNullOrEmpty())
         {
-            NotificationService(notif)
+            when(notif.tag)
+            {
+                "Read"-> callNotifier(notif.user,ctx, notif.tag, "")
+                "New item" -> callNotifier(notif.user, ctx, notif.tag, "")
+                else -> callNotifier(notif.user, ctx, notif.tag, notif.item!!)
+            }
             del(notif)
         }
     }
@@ -30,12 +34,13 @@ object NotificationController
         Notifier.notifyCustomer(id!!,ctx,tag,name)
     }
 
-    fun read(gdl:OnGetDataListener)
+    fun read(gdl:NotificationGetDataListener,ctx: Context)
     {
         FirebaseNotificationController.db.addValueEventListener(object : ValueEventListener
         {
             override fun onDataChange(snapshot: DataSnapshot)
             {
+                gdl.attachContext(ctx)
                 gdl.onSuccess(snapshot)
             }
 

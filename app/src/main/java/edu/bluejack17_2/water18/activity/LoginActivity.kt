@@ -38,7 +38,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, GoogleApiClient
         ProductController.read(ProductGetDataListener)
         TransactionController.readTransaction(TransactionGetDataListener)
         UserController.read(UserGetDataListener)
-        NotificationController.read(NotificationGetDataListener)
+        NotificationController.read(NotificationGetDataListener(),this)
     }
 
 

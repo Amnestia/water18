@@ -25,7 +25,6 @@ import edu.bluejack17_2.water18.fragment.customer.tab.view.HistoryFragment
 import edu.bluejack17_2.water18.fragment.customer.tab.view.HomeHistoryParentFragment
 import edu.bluejack17_2.water18.model.Product
 import edu.bluejack17_2.water18.model.Transaction
-import edu.bluejack17_2.water18.service.NotificationService
 import edu.bluejack17_2.water18.storage.UserStorage
 import kotlinx.android.synthetic.main.drawer_navigation.*
 import kotlinx.android.synthetic.main.drawer_navigation_header.view.*
@@ -59,6 +58,7 @@ class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationIte
         } catch (e: IllegalStateException){
 
         }
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?)
@@ -69,7 +69,6 @@ class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationIte
         HistoryController.readHistory(HistoryGetDataListener)
         initDrawer()
         initFragment()
-        startService(intentFor<NotificationService>())
     }
 
     private fun initFragment()
