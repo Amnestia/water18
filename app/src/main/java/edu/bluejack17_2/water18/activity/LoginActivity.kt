@@ -10,9 +10,11 @@ import edu.bluejack17_2.water18.R
 import edu.bluejack17_2.water18.controller.ProductController
 import edu.bluejack17_2.water18.controller.TransactionController
 import edu.bluejack17_2.water18.controller.UserController
+import edu.bluejack17_2.water18.firebase.listener.NotificationGetDataListener
 import edu.bluejack17_2.water18.firebase.listener.ProductGetDataListener
 import edu.bluejack17_2.water18.firebase.listener.TransactionGetDataListener
 import edu.bluejack17_2.water18.firebase.listener.UserGetDataListener
+import edu.bluejack17_2.water18.notification.controller.NotificationController
 import edu.bluejack17_2.water18.storage.UserStorage
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.intentFor
@@ -36,6 +38,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, GoogleApiClient
         ProductController.read(ProductGetDataListener)
         TransactionController.readTransaction(TransactionGetDataListener)
         UserController.read(UserGetDataListener)
+        NotificationController.read(NotificationGetDataListener)
     }
 
     override fun onCreate(savedInstanceState: Bundle?)
