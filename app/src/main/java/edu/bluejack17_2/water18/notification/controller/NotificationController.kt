@@ -15,7 +15,7 @@ object NotificationController
 {
     fun execute(notif: Notification)
     {
-        if(!notif.timestamp.deleted_at.isNullOrEmpty())
+        if(notif.timestamp.deleted_at.isNullOrEmpty())
         {
             when(notif.tag)
             {
