@@ -17,12 +17,7 @@ object NotificationController
     {
         if(notif.timestamp.deleted_at.isNullOrEmpty())
         {
-            when(notif.tag)
-            {
-                "Read"-> callNotifier(notif.user,NotificationService(),notif.tag,"")
-                "New item" -> callNotifier(notif.user,NotificationService(),notif.tag,"")
-                else -> callNotifier(notif.user,NotificationService(),notif.tag,notif.item!!)
-            }
+            NotificationService(notif)
             del(notif)
         }
     }

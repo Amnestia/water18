@@ -1,6 +1,5 @@
 package edu.bluejack17_2.water18.activity
 
-import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
@@ -26,6 +25,7 @@ import edu.bluejack17_2.water18.fragment.customer.tab.view.HistoryFragment
 import edu.bluejack17_2.water18.fragment.customer.tab.view.HomeHistoryParentFragment
 import edu.bluejack17_2.water18.model.Product
 import edu.bluejack17_2.water18.model.Transaction
+import edu.bluejack17_2.water18.service.NotificationService
 import edu.bluejack17_2.water18.storage.UserStorage
 import kotlinx.android.synthetic.main.drawer_navigation.*
 import kotlinx.android.synthetic.main.drawer_navigation_header.view.*
@@ -37,9 +37,7 @@ class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationIte
                              CartFragment.OnListFragmentInteractionListener, GoogleApiClient
                              .OnConnectionFailedListener
 {
-
-    lateinit var ctx:Context
-
+    
     private var mGoogleApiClient: GoogleApiClient? = null
 
     override fun onConnectionFailed(connectionResult: ConnectionResult)
@@ -72,7 +70,7 @@ class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationIte
         HistoryController.readHistory(HistoryGetDataListener)
         initDrawer()
         initFragment()
-        ctx=applicationContext
+        startService(intentFor<NotificationService>())
     }
 
     private fun initFragment()

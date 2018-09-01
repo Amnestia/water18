@@ -41,6 +41,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, GoogleApiClient
         NotificationController.read(NotificationGetDataListener)
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)

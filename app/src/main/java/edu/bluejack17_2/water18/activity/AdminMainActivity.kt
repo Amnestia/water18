@@ -15,6 +15,7 @@ import edu.bluejack17_2.water18.fragment.admin.TransactionAdminFragment
 import edu.bluejack17_2.water18.fragment.customer.OrderFragment
 import edu.bluejack17_2.water18.model.Product
 import edu.bluejack17_2.water18.model.Transaction
+import edu.bluejack17_2.water18.service.NotificationService
 import edu.bluejack17_2.water18.service.TrackerService
 import edu.bluejack17_2.water18.storage.TransactionStorage
 import edu.bluejack17_2.water18.storage.UserStorage
@@ -35,6 +36,7 @@ class AdminMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         setSupportActionBar(toolbar)
         initDrawer()
         initFragment()
+        startService(intentFor<NotificationService>())
     }
 
     private fun initFragment()
