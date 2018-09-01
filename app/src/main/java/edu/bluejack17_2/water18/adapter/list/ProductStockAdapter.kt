@@ -15,6 +15,7 @@ import edu.bluejack17_2.water18.model.Product
 import edu.bluejack17_2.water18.model.Timestamp
 import edu.bluejack17_2.water18.notification.controller.NotificationController
 import kotlinx.android.synthetic.main.item_stock.view.*
+import org.jetbrains.anko.toast
 
 class ProductStockAdapter(private val mValues: List<Product>, private val mListener: StockFragment.OnListFragmentInteractionListener?) : RecyclerView.Adapter<ProductStockAdapter.ViewHolder>()
 {
@@ -82,7 +83,9 @@ class ProductStockAdapter(private val mValues: List<Product>, private val mListe
         if(item.stock!!<1)
             tag="Out of stock"
         ProductController.update(item)
+        ctx.toast("Updated")
         if(tag!="")
         NotificationController.insert(Notification("",tag,"",item.name, Timestamp()))
+
     }
 }

@@ -37,7 +37,7 @@ class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationIte
                              CartFragment.OnListFragmentInteractionListener, GoogleApiClient
                              .OnConnectionFailedListener
 {
-    
+
     private var mGoogleApiClient: GoogleApiClient? = null
 
     override fun onConnectionFailed(connectionResult: ConnectionResult)
@@ -59,7 +59,6 @@ class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationIte
         } catch (e: IllegalStateException){
 
         }
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?)
