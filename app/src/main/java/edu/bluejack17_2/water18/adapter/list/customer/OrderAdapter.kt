@@ -68,7 +68,7 @@ class OrderAdapter(private val mValues: List<Product>, private val mListener: Or
 
     private fun refreshView(txt:TextView)
     {
-        txt.visibility=TextView.INVISIBLE
+        txt.visibility=TextView.GONE
         txt.visibility=TextView.VISIBLE
     }
 
@@ -81,6 +81,10 @@ class OrderAdapter(private val mValues: List<Product>, private val mListener: Or
     private fun updateItem(item: Product,holder: ViewHolder)
     {
         var quantity=holder.itemQuantity.text.toString().toLongOrNull()
+        if(quantity!!<=0)
+        {
+            return
+        }
         quantity = quantity?.plus(CartController.getCurrentQuantity(item))
         if(quantity!!>item.stock!!)
         {
@@ -89,6 +93,7 @@ class OrderAdapter(private val mValues: List<Product>, private val mListener: Or
         }
         CartController.add(item, quantity)
         updateTotalPrice()
+        ctx.toast("Item has been added to cart")
     }
 
     private fun deleteItem(item: Product,holder: ViewHolder)

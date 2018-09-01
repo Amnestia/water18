@@ -10,8 +10,10 @@ import android.widget.TextView
 import edu.bluejack17_2.water18.R
 import edu.bluejack17_2.water18.controller.ProductController
 import edu.bluejack17_2.water18.fragment.admin.StockFragment
+import edu.bluejack17_2.water18.model.Notification
 import edu.bluejack17_2.water18.model.Product
-import edu.bluejack17_2.water18.notification.Notifier
+import edu.bluejack17_2.water18.model.Timestamp
+import edu.bluejack17_2.water18.notification.controller.NotificationController
 import kotlinx.android.synthetic.main.item_stock.view.*
 
 class ProductStockAdapter(private val mValues: List<Product>, private val mListener: StockFragment.OnListFragmentInteractionListener?) : RecyclerView.Adapter<ProductStockAdapter.ViewHolder>()
@@ -62,7 +64,7 @@ class ProductStockAdapter(private val mValues: List<Product>, private val mListe
     fun deleteItem(item : Product)
     {
         ProductController.delete(item)
-        Notifier.notifyAllCustomer(ctx,"Out of stock",item.name as String)
+        NotificationController.insert(Notification("","Out of stock","",item.name, Timestamp()))
     }
 
     fun updateItem(item : Product, holder: ViewHolder)
@@ -81,6 +83,6 @@ class ProductStockAdapter(private val mValues: List<Product>, private val mListe
             tag="Out of stock"
         ProductController.update(item)
         if(tag!="")
-        Notifier.notifyAllCustomer(ctx,tag,item.name as String)
+        NotificationController.insert(Notification("",tag,"",item.name, Timestamp()))
     }
 }

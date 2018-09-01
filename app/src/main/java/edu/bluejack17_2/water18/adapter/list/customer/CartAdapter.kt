@@ -61,9 +61,16 @@ class CartAdapter(private val mValues: List<PairX<Product, Long>>, private val m
         val btnRemove=mView.btn_remove
     }
 
+    private fun refreshView(txt:TextView)
+    {
+        txt.visibility=TextView.GONE
+        txt.visibility=TextView.VISIBLE
+    }
+
     private fun updateTotalPrice()
     {
         txtTotalPrice.setText(CartController.getTotalPrice().toString(),TextView.BufferType.NORMAL)
+        refreshView(txtTotalPrice)
     }
 
     private fun deleteItem(item: Product, holder: ViewHolder)

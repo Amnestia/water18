@@ -8,9 +8,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import edu.bluejack17_2.water18.R
 import edu.bluejack17_2.water18.controller.ProductController
+import edu.bluejack17_2.water18.model.Notification
 import edu.bluejack17_2.water18.model.Product
 import edu.bluejack17_2.water18.model.Timestamp
-import edu.bluejack17_2.water18.notification.Notifier
+import edu.bluejack17_2.water18.notification.controller.NotificationController
 import kotlinx.android.synthetic.main.fragment_add_item.*
 import org.jetbrains.anko.support.v4.toast
 
@@ -67,7 +68,7 @@ class AddItemFragment : Fragment(), View.OnClickListener
         tf_price.setText("", TextView.BufferType.EDITABLE)
         tf_quantity.setText("", TextView.BufferType.EDITABLE)
         toast("Successfully added new item")
-        Notifier.notifyAllCustomer(this.context!!,"New item","")
+        NotificationController.insert(Notification("","New item","","", Timestamp()))
     }
 
     fun validate(name:String,price:Long?,stock:Long?):String

@@ -1,10 +1,10 @@
 package edu.bluejack17_2.water18.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.MenuItem
 import edu.bluejack17_2.water18.R
 import edu.bluejack17_2.water18.firebase.controller.FirebaseUserController
@@ -21,7 +21,6 @@ import edu.bluejack17_2.water18.storage.UserStorage
 import kotlinx.android.synthetic.main.drawer_navigation_admin.*
 import kotlinx.android.synthetic.main.drawer_navigation_header.view.*
 import org.jetbrains.anko.intentFor
-import android.content.Intent
 
 
 

@@ -1,5 +1,6 @@
 package edu.bluejack17_2.water18.activity
 
+import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
@@ -37,6 +38,8 @@ class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationIte
                              .OnConnectionFailedListener
 {
 
+    lateinit var ctx:Context
+
     private var mGoogleApiClient: GoogleApiClient? = null
 
     override fun onConnectionFailed(connectionResult: ConnectionResult)
@@ -69,6 +72,7 @@ class CustomerMainActivity : AppCompatActivity(), NavigationView.OnNavigationIte
         HistoryController.readHistory(HistoryGetDataListener)
         initDrawer()
         initFragment()
+        ctx=applicationContext
     }
 
     private fun initFragment()

@@ -12,6 +12,7 @@ data class User(var id: String, var address: String?,
 
     override fun update(ctx: Context, tag: String, name: String)
     {
+        if(role.equals("customer"))
         NotificationExecutor.notif(ctx,tag,name)
     }
 
