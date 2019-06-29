@@ -49,9 +49,6 @@
     <string name="start_tracking">Start tracking</string>
 
     <string name="logo_desc">app logo</string>
-    <string name="facebook_app_id">232840567417687</string>
-
-    <string name="fb_login_protocol_scheme">fb232840567417687</string>
     <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
